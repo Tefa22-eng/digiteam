@@ -1,0 +1,1532 @@
+2026-04-12 10:59:13 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: shodan
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: censys
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: virustotal
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 10:59:27 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 10:59:27 | digiteam.runner                          | INFO     | Loaded 9 modules for execution
+2026-04-12 10:59:27 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for google.com
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for google.com
+2026-04-12 10:59:27 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for google.com
+2026-04-12 10:59:27 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for google.com
+2026-04-12 10:59:27 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for google.com
+2026-04-12 10:59:27 | digiteam.module.Censys Intelligence      | WARNING  | Censys Intelligence skipped (pre-check failed)
+2026-04-12 10:59:27 | digiteam.module.VirusTotal Intelligence  | WARNING  | VirusTotal Intelligence skipped (pre-check failed)
+2026-04-12 10:59:27 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for google.com
+2026-04-12 10:59:27 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for google.com
+2026-04-12 10:59:27 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 10:59:27 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 10:59:27 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 10:59:27 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/142.251.110.138 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 AAAA records
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 TXT records
+2026-04-12 10:59:27 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 10:59:28 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 CAA records
+2026-04-12 10:59:28 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 10:59:28 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 10:59:30 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 10:59:30 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=google.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 10:59:30 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.google.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 10:59:30 | digiteam.module.Subdomain Enumeration    | INFO     | Found 98 unique subdomains from 1 sources
+2026-04-12 10:59:30 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 10:59:32 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 10:59:37 | digiteam.module.WHOIS Lookup             | ERROR    | WHOIS Lookup failed: timed out
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\digiteam\core\base_module.py", line 107, in execute
+    data = self._run()
+           ^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\digiteam\modules\passive\whois_lookup.py", line 45, in _run
+    w = python_whois.whois(self.target)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\__init__.py", line 76, in whois
+    text = nic_client.whois_lookup(None, domain, flags, quiet=quiet, ignore_socket_errors=ignore_socket_errors, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 454, in whois_lookup
+    nichost = self.choose_server(query_arg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 413, in choose_server
+    return self.findwhois_iana(tld)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 185, in findwhois_iana
+    s.connect(("whois.iana.org", 43))
+TimeoutError: timed out
+
+2026-04-12 11:00:04 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: shodan
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: censys
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: virustotal
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 11:00:15 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 11:00:15 | digiteam.runner                          | INFO     | Loaded 9 modules for execution
+2026-04-12 11:00:15 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for google.com
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for google.com
+2026-04-12 11:00:15 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for google.com
+2026-04-12 11:00:15 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for google.com
+2026-04-12 11:00:15 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for google.com
+2026-04-12 11:00:15 | digiteam.module.Censys Intelligence      | WARNING  | Censys Intelligence skipped (pre-check failed)
+2026-04-12 11:00:15 | digiteam.module.VirusTotal Intelligence  | WARNING  | VirusTotal Intelligence skipped (pre-check failed)
+2026-04-12 11:00:15 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for google.com
+2026-04-12 11:00:15 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for google.com
+2026-04-12 11:00:15 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 11:00:15 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 11:00:15 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 11:00:15 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/142.251.110.138 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 AAAA records
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 11:00:15 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 TXT records
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 11:00:15 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 CAA records
+2026-04-12 11:00:16 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 11:00:16 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 11:00:25 | digiteam.module.WHOIS Lookup             | ERROR    | WHOIS Lookup failed: timed out
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\digiteam\core\base_module.py", line 107, in execute
+    data = self._run()
+           ^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\digiteam\modules\passive\whois_lookup.py", line 45, in _run
+    w = python_whois.whois(self.target)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\__init__.py", line 76, in whois
+    text = nic_client.whois_lookup(None, domain, flags, quiet=quiet, ignore_socket_errors=ignore_socket_errors, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 454, in whois_lookup
+    nichost = self.choose_server(query_arg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 413, in choose_server
+    return self.findwhois_iana(tld)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 185, in findwhois_iana
+    s.connect(("whois.iana.org", 43))
+TimeoutError: timed out
+
+2026-04-12 11:00:28 | digiteam.module.Wayback URLs             | DEBUG    | CDX API query failed: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=60)
+2026-04-12 11:00:28 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 11:00:45 | digiteam.module.Subdomain Enumeration    | DEBUG    | crt.sh query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-12 11:00:45 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-12 11:00:45 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 11:00:46 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=google.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:00:46 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.google.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:00:46 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-12 11:00:46 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 11:01:15 | digiteam.module.Wayback URLs             | DEBUG    | CDX API query failed: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=60)
+2026-04-12 11:01:15 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 11:01:16 | digiteam.report                          | INFO     | JSON report generated: reports\google.com_2026-04-12_11-01-15\report.json
+2026-04-12 11:14:36 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 11:14:57 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 11:14:57 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 11:14:57 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for google.com
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for google.com
+2026-04-12 11:14:57 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for google.com
+2026-04-12 11:14:57 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for google.com
+2026-04-12 11:14:57 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for google.com
+2026-04-12 11:14:57 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for google.com
+2026-04-12 11:14:57 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for google.com
+2026-04-12 11:14:57 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for google.com
+2026-04-12 11:14:57 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for google.com
+2026-04-12 11:14:57 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for google.com
+2026-04-12 11:14:57 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 11:14:57 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 11:14:57 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 AAAA records
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 11:14:57 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/142.251.142.78 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 TXT records
+2026-04-12 11:14:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 11:14:58 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 CAA records
+2026-04-12 11:14:58 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 11:14:58 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 11:14:58 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for google.com
+2026-04-12 11:14:58 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 11:14:58 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for google.com
+2026-04-12 11:14:58 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 11:14:58 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 11:14:58 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 11:14:58 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for google.com
+2026-04-12 11:14:58 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=google.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:14:58 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 11:14:58 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.google.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:14:58 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-12 11:14:58 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 11:14:59 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 11:14:59 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 34482 subdomains for google.com
+2026-04-12 11:14:59 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 11:14:59 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 11:14:59 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 11:15:02 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 11:15:07 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 2000 subdomains
+2026-04-12 11:15:07 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 11:15:07 | digiteam.module.WHOIS Lookup             | ERROR    | WHOIS Lookup failed: timed out
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\digiteam\core\base_module.py", line 107, in execute
+    data = self._run()
+           ^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\digiteam\modules\passive\whois_lookup.py", line 45, in _run
+    w = python_whois.whois(self.target)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\__init__.py", line 76, in whois
+    text = nic_client.whois_lookup(None, domain, flags, quiet=quiet, ignore_socket_errors=ignore_socket_errors, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 454, in whois_lookup
+    nichost = self.choose_server(query_arg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 413, in choose_server
+    return self.findwhois_iana(tld)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 185, in findwhois_iana
+    s.connect(("whois.iana.org", 43))
+TimeoutError: timed out
+
+2026-04-12 11:15:43 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775985388
+2026-04-12 11:15:57 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775985388
+2026-04-12 11:15:58 | digiteam.module.Wayback URLs             | DEBUG    | CDX API query failed: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=60)
+2026-04-12 11:15:58 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 11:16:41 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 143 results across 129 repositories
+2026-04-12 11:16:41 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 11:16:41 | digiteam.report                          | INFO     | JSON report generated: reports\google.com_2026-04-12_11-16-41\report.json
+2026-04-12 11:18:54 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-12 11:19:08 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-12 11:19:08 | digiteam.runner                          | INFO     | Loaded 6 modules for execution
+2026-04-12 11:19:08 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for google.com
+2026-04-12 11:19:08 | digiteam.module.Port Scanner             | INFO     | Scanning ports for google.com
+2026-04-12 11:19:08 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for google.com
+2026-04-12 11:19:08 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on google.com
+2026-04-12 11:19:08 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-12 11:19:08 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-12 11:19:08 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on google.com
+2026-04-12 11:19:08 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-12 11:19:08 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-12 11:19:09 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-12 11:19:09 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-12 11:19:14 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-12 11:23:36 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-12 11:23:36 | digiteam.report                          | INFO     | JSON report generated: reports\google.com_2026-04-12_11-23-36\report.json
+2026-04-12 11:27:22 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-12 11:27:29 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-12 11:27:29 | digiteam.runner                          | INFO     | Loaded 19 modules for execution
+2026-04-12 11:27:29 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for google.com
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for google.com
+2026-04-12 11:27:29 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for google.com
+2026-04-12 11:27:29 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for google.com
+2026-04-12 11:27:29 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for google.com
+2026-04-12 11:27:29 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for google.com
+2026-04-12 11:27:29 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for google.com
+2026-04-12 11:27:29 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for google.com
+2026-04-12 11:27:29 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for google.com
+2026-04-12 11:27:29 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for google.com
+2026-04-12 11:27:29 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 11:27:29 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 11:27:29 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 AAAA records
+2026-04-12 11:27:29 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/142.251.142.78 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 TXT records
+2026-04-12 11:27:29 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 11:27:29 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 11:27:29 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for google.com
+2026-04-12 11:27:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 11:27:30 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 CAA records
+2026-04-12 11:27:30 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 11:27:30 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 11:27:30 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 11:27:30 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for google.com
+2026-04-12 11:27:30 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 11:27:30 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for google.com
+2026-04-12 11:27:30 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 11:27:30 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for google.com
+2026-04-12 11:27:30 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-12 11:27:30 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-12 11:27:30 | digiteam.module.Port Scanner             | INFO     | Scanning ports for google.com
+2026-04-12 11:27:30 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 34482 subdomains for google.com
+2026-04-12 11:27:30 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 11:27:30 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on google.com
+2026-04-12 11:27:30 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 11:27:30 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for google.com
+2026-04-12 11:27:31 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 11:27:31 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 11:27:31 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on google.com
+2026-04-12 11:27:31 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 11:27:31 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-12 11:27:31 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-12 11:27:31 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-12 11:27:32 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=google.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:27:32 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.google.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 11:27:32 | digiteam.module.Subdomain Enumeration    | INFO     | Found 98 unique subdomains from 1 sources
+2026-04-12 11:27:32 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 11:27:32 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-12 11:27:36 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-12 11:27:39 | digiteam.module.WHOIS Lookup             | ERROR    | WHOIS Lookup failed: timed out
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\digiteam\core\base_module.py", line 107, in execute
+    data = self._run()
+           ^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\digiteam\modules\passive\whois_lookup.py", line 45, in _run
+    w = python_whois.whois(self.target)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\__init__.py", line 76, in whois
+    text = nic_client.whois_lookup(None, domain, flags, quiet=quiet, ignore_socket_errors=ignore_socket_errors, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 454, in whois_lookup
+    nichost = self.choose_server(query_arg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 413, in choose_server
+    return self.findwhois_iana(tld)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\whois\whois.py", line 185, in findwhois_iana
+    s.connect(("whois.iana.org", 43))
+TimeoutError: timed out
+
+2026-04-12 11:27:40 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 2000 subdomains
+2026-04-12 11:27:40 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 11:28:01 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986140
+2026-04-12 11:28:14 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986140
+2026-04-12 11:28:28 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986140
+2026-04-12 11:28:30 | digiteam.module.Wayback URLs             | DEBUG    | CDX API query failed: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=60)
+2026-04-12 11:28:30 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 11:28:55 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986205
+2026-04-12 11:29:08 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986205
+2026-04-12 11:29:21 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775986205
+2026-04-12 11:29:34 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 117 results across 103 repositories
+2026-04-12 11:29:34 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 11:31:55 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-12 11:31:55 | digiteam.report                          | INFO     | JSON report generated: reports\google.com_2026-04-12_11-31-55\report.json
+2026-04-12 12:02:01 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 12:02:11 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 12:02:11 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 12:02:11 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-12 12:02:11 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-12 12:02:11 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-12 12:02:11 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-12 12:02:11 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-12 12:02:11 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-12 12:02:11 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-12 12:02:11 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-12 12:02:11 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-12 12:02:11 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 12:02:11 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 12:02:11 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 12:02:11 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/104.36.194.73 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 12:02:11 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-12 12:02:11 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 12:02:11 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 12:02:11 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 12:02:11 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 12:02:11 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-12 12:02:12 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 12:02:12 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 12:02:12 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-12 12:02:12 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 12:02:12 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-12 12:02:12 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 12:02:12 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 12:02:12 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 12:02:13 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 12:02:13 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 12:02:13 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 12:02:14 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-12 12:02:14 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 12:02:16 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 12:02:16 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 12:02:16 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 12:02:27 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 12:02:28 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:02:28 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:02:28 | digiteam.module.Subdomain Enumeration    | INFO     | Found 243 unique subdomains from 1 sources
+2026-04-12 12:02:28 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 12:02:43 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775988222
+2026-04-12 12:02:49 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 12:02:56 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775988222
+2026-04-12 12:03:10 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775988222
+2026-04-12 12:03:47 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 110 results across 99 repositories
+2026-04-12 12:03:47 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 12:03:47 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-12_12-03-47\report.json
+2026-04-12 12:03:47 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-12_12-03-47\report.html
+2026-04-12 12:09:11 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-12 12:09:16 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-12 12:09:16 | digiteam.runner                          | INFO     | Loaded 6 modules for execution
+2026-04-12 12:09:16 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for uber.com
+2026-04-12 12:09:16 | digiteam.module.Port Scanner             | INFO     | Scanning ports for uber.com
+2026-04-12 12:09:16 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for uber.com
+2026-04-12 12:09:16 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on uber.com
+2026-04-12 12:09:16 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-12 12:09:16 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-12 12:09:16 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on uber.com
+2026-04-12 12:09:16 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-12 12:09:16 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-12 12:09:17 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-12 12:09:17 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-12 12:09:25 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-12 12:13:41 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-12 12:13:41 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-12_12-13-41\report.json
+2026-04-12 12:13:41 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-12_12-13-41\report.html
+2026-04-12 12:23:18 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 12:23:25 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 12:23:25 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 12:23:25 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-12 12:23:25 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-12 12:23:25 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-12 12:23:25 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-12 12:23:25 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-12 12:23:25 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-12 12:23:25 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-12 12:23:25 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-12 12:23:25 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-12 12:23:25 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-12 12:23:25 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 12:23:25 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 12:23:25 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 12:23:25 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 12:23:26 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-12 12:23:26 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/69.48.216.5 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:23:26 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 12:23:26 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-12 12:23:26 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 12:23:26 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 12:23:26 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 12:23:26 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-12 12:23:26 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 12:23:26 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 12:23:26 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 12:23:26 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-12 12:23:26 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 12:23:26 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-12 12:23:26 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 12:23:26 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 12:23:26 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 12:23:27 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 12:23:27 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 12:23:27 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-12 12:23:27 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 12:23:28 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 12:23:28 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 12:23:28 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 12:23:30 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 12:23:31 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 12:23:31 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 12:23:35 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 12:23:38 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:23:39 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:23:39 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-12 12:23:39 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 12:23:58 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775989497
+2026-04-12 12:24:11 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775989497
+2026-04-12 12:24:24 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775989497
+2026-04-12 12:25:01 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 110 results across 99 repositories
+2026-04-12 12:25:01 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 12:25:01 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-12_12-25-01\report.json
+2026-04-12 12:25:01 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-12_12-25-01\report.html
+2026-04-12 12:25:01 | digiteam.postprocessor                   | INFO     | Loaded report from reports\uber.com_2026-04-12_12-25-01\report.json
+2026-04-12 12:25:01 | digiteam.postprocessor                   | INFO     | Extracted 10198 unique subdomains
+2026-04-12 12:25:01 | digiteam.postprocessor                   | INFO     | Extracted 2172 unique URLs
+2026-04-12 12:25:01 | digiteam.postprocessor                   | INFO     | Running httpx on 10198 subdomains (rate=150, threads=50)
+2026-04-12 12:25:02 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 10198 subdomains
+2026-04-12 12:25:02 | digiteam.postprocessor                   | INFO     | Running httpx on 2126 URLs (rate=150, threads=50)
+2026-04-12 12:25:02 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 2126 URLs
+2026-04-12 12:25:02 | digiteam.runner                          | INFO     | Post-processing complete. Files written: 7
+2026-04-12 12:44:02 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 12:44:07 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 12:44:07 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 12:44:07 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-12 12:44:07 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-12 12:44:07 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-12 12:44:07 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-12 12:44:07 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-12 12:44:07 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-12 12:44:07 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-12 12:44:07 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-12 12:44:07 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-12 12:44:07 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 12:44:07 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 12:44:07 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 12:44:07 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/69.48.216.87 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 12:44:07 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 12:44:07 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 12:44:07 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-12 12:44:07 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 12:44:07 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 12:44:07 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 12:44:07 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-12 12:44:08 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 12:44:08 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-12 12:44:08 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 12:44:08 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 12:44:08 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 12:44:08 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 12:44:08 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 12:44:09 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-12 12:44:09 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 12:44:09 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 12:44:09 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 12:44:12 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 12:44:12 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 12:44:12 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 12:44:12 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 12:44:24 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 12:44:25 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:44:25 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:44:25 | digiteam.module.Subdomain Enumeration    | INFO     | Found 229 unique subdomains from 1 sources
+2026-04-12 12:44:25 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 12:44:43 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775990738
+2026-04-12 12:44:57 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775990738
+2026-04-12 12:45:38 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 110 results across 99 repositories
+2026-04-12 12:45:38 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 12:45:38 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-12_12-45-38\report.json
+2026-04-12 12:45:38 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-12_12-45-38\report.html
+2026-04-12 12:45:38 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-12_12-45-38\report.json
+2026-04-12 12:45:38 | digiteam.postprocessor                   | INFO     | Extracted 10198 unique subdomains
+2026-04-12 12:49:28 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 12:49:37 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 12:49:37 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 12:49:37 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for tesla.com
+2026-04-12 12:49:37 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for tesla.com
+2026-04-12 12:49:37 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for tesla.com
+2026-04-12 12:49:37 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for tesla.com
+2026-04-12 12:49:37 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for tesla.com
+2026-04-12 12:49:37 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 12:49:37 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 12:49:37 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 12:49:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 10 A records
+2026-04-12 12:49:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 12:49:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 7 NS records
+2026-04-12 12:49:37 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/2.18.51.207 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:49:38 | digiteam.module.DNS Enumeration          | DEBUG    | Found 32 TXT records
+2026-04-12 12:49:38 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 12:49:38 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 12:49:38 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 12:49:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for tesla.com
+2026-04-12 12:49:38 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 12:49:38 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 12:49:38 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for tesla.com
+2026-04-12 12:49:38 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 12:49:38 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 12:49:38 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for tesla.com
+2026-04-12 12:49:38 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 12:49:38 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 12:49:38 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 12:49:38 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 12:49:38 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 12:49:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 804 subdomains for tesla.com
+2026-04-12 12:49:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 12:49:40 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 12:49:41 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 12:49:41 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 12:49:42 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 12:49:42 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 12:49:46 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 12:49:58 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=tesla.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:49:58 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.tesla.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 12:49:58 | digiteam.module.Subdomain Enumeration    | INFO     | Found 489 unique subdomains from 1 sources
+2026-04-12 12:49:58 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 12:50:04 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 12:50:15 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775991069
+2026-04-12 12:50:28 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775991069
+2026-04-12 12:51:09 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 108 results across 93 repositories
+2026-04-12 12:51:09 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 12:51:09 | digiteam.report                          | INFO     | JSON report generated: reports\tesla.com_2026-04-12_12-51-09\report.json
+2026-04-12 12:51:09 | digiteam.report                          | INFO     | HTML report generated: reports\tesla.com_2026-04-12_12-51-09\report.html
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Loaded report: reports\tesla.com_2026-04-12_12-51-09\report.json
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Extracted 1056 unique subdomains
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Extracted 2126 unique URLs
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Wrote 1056 lines to all_subdomains.txt
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Wrote 2126 lines to all_urls.txt
+2026-04-12 12:51:09 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 1056 subdomains
+2026-04-12 12:51:09 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmpj3wcceos.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 12:51:10 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 12:51:10 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 12:51:10 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 1056 subdomains
+2026-04-12 12:51:10 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 601 URLs
+2026-04-12 12:51:10 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmpidjr548x.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 12:51:10 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 12:51:10 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 12:51:10 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 601 URLs
+2026-04-12 12:51:10 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_subdomains.txt
+2026-04-12 12:51:10 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_urls.txt
+2026-04-12 14:28:17 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 14:28:29 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 14:28:29 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 14:28:29 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for google.com
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for google.com
+2026-04-12 14:28:29 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for google.com
+2026-04-12 14:28:29 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for google.com
+2026-04-12 14:28:29 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for google.com
+2026-04-12 14:28:29 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for google.com
+2026-04-12 14:28:29 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for google.com
+2026-04-12 14:28:29 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for google.com
+2026-04-12 14:28:29 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for google.com
+2026-04-12 14:28:29 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for google.com
+2026-04-12 14:28:29 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 14:28:29 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 14:28:29 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 AAAA records
+2026-04-12 14:28:29 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/142.251.14.101 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 TXT records
+2026-04-12 14:28:29 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 14:28:30 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 14:28:30 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 CAA records
+2026-04-12 14:28:30 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 14:28:30 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for google.com
+2026-04-12 14:28:30 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 14:28:30 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 14:28:30 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 14:28:30 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for google.com
+2026-04-12 14:28:30 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 14:28:30 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 14:28:30 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 14:28:30 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for google.com
+2026-04-12 14:28:30 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 14:28:31 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 14:28:31 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 34482 subdomains for google.com
+2026-04-12 14:28:31 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 14:28:32 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 14:28:32 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 14:28:32 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=google.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 14:28:32 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.google.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 14:28:32 | digiteam.module.Subdomain Enumeration    | INFO     | Found 98 unique subdomains from 1 sources
+2026-04-12 14:28:32 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 14:28:33 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 14:28:34 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 14:28:34 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 14:28:34 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 14:29:07 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775997001
+2026-04-12 14:29:21 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1775997001
+2026-04-12 14:29:30 | digiteam.module.Wayback URLs             | DEBUG    | CDX API query failed: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=60)
+2026-04-12 14:29:30 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 14:30:05 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 147 results across 133 repositories
+2026-04-12 14:30:05 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 14:30:06 | digiteam.report                          | INFO     | JSON report generated: reports\google.com_2026-04-12_14-30-05\report.json
+2026-04-12 14:30:06 | digiteam.report                          | INFO     | HTML report generated: reports\google.com_2026-04-12_14-30-05\report.html
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Loaded report: reports\google.com_2026-04-12_14-30-05\report.json
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Extracted 34621 unique subdomains
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Extracted 0 unique URLs
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Wrote 34621 lines to all_subdomains.txt
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to all_urls.txt
+2026-04-12 14:30:06 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 34621 subdomains
+2026-04-12 14:30:06 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmpogqe5eke.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 14:30:07 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 14:30:07 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 14:30:07 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 34621 subdomains
+2026-04-12 14:30:07 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_subdomains.txt
+2026-04-12 14:30:07 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_urls.txt
+2026-04-12 19:05:20 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 19:06:14 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 19:06:14 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 19:06:14 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 19:06:14 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 19:06:14 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 A records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 AAAA records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-12 19:06:14 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/172.66.41.38 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 NS records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 TXT records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | DEBUG    | Found 13 CAA records
+2026-04-12 19:06:14 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 19:06:14 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for securitytrails.com
+2026-04-12 19:06:14 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 19:06:14 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 19:06:15 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 19:06:15 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for securitytrails.com
+2026-04-12 19:06:15 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 19:06:15 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 19:06:15 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 19:06:15 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for securitytrails.com
+2026-04-12 19:06:15 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-12 19:06:15 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 19:06:15 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 19:06:15 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 19:06:16 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 51 subdomains for securitytrails.com
+2026-04-12 19:06:16 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 19:06:16 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 19:06:16 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 19:06:18 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 19:06:19 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 19:06:19 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 19:06:19 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 19:06:19 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 19:06:20 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=securitytrails.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 19:06:20 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.securitytrails.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 19:06:20 | digiteam.module.Subdomain Enumeration    | INFO     | Found 33 unique subdomains from 1 sources
+2026-04-12 19:06:20 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 19:06:49 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776013666
+2026-04-12 19:07:03 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776013666
+2026-04-12 19:07:43 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 94 results across 68 repositories
+2026-04-12 19:07:43 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 19:07:43 | digiteam.report                          | INFO     | JSON report generated: reports\securitytrails.com_2026-04-12_19-07-43\report.json
+2026-04-12 19:07:43 | digiteam.report                          | INFO     | HTML report generated: reports\securitytrails.com_2026-04-12_19-07-43\report.html
+2026-04-12 19:07:43 | digiteam.postprocessor                   | INFO     | Loaded report: reports\securitytrails.com_2026-04-12_19-07-43\report.json
+2026-04-12 19:07:43 | digiteam.postprocessor                   | INFO     | Extracted 101 unique subdomains
+2026-04-12 19:07:43 | digiteam.postprocessor                   | INFO     | Extracted 2163 unique URLs
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Wrote 101 lines to all_subdomains.txt
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Wrote 2163 lines to all_urls.txt
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 101 subdomains
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmphibbwni8.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 101 subdomains
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 1330 URLs
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmp8bw1106c.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 19:07:44 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 1330 URLs
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_subdomains.txt
+2026-04-12 19:07:44 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_urls.txt
+2026-04-12 20:21:01 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-12 20:21:07 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-12 20:21:07 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-12 20:21:07 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for tria.ge
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for tria.ge
+2026-04-12 20:21:07 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for tria.ge
+2026-04-12 20:21:07 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for tria.ge
+2026-04-12 20:21:07 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for tria.ge
+2026-04-12 20:21:07 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-12 20:21:07 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-12 20:21:07 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 A records
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 AAAA records
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 MX records
+2026-04-12 20:21:07 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/104.18.40.144 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 2 NS records
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 TXT records
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-12 20:21:07 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-12 20:21:07 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-12 20:21:07 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for tria.ge
+2026-04-12 20:21:07 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-12 20:21:07 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for tria.ge
+2026-04-12 20:21:08 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-12 20:21:08 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-12 20:21:08 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-12 20:21:08 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-12 20:21:08 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for tria.ge
+2026-04-12 20:21:08 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-12 20:21:08 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-12 20:21:08 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 11 subdomains for tria.ge
+2026-04-12 20:21:08 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-12 20:21:09 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-12 20:21:09 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-12 20:21:12 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-12 20:21:12 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-12 20:21:12 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-12 20:21:13 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-12 20:21:18 | digiteam.module.WHOIS Lookup             | DEBUG    | python-whois library failed: timed out
+2026-04-12 20:21:23 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=tria.ge (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 20:21:23 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.tria.ge (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 20:21:23 | digiteam.module.Subdomain Enumeration    | INFO     | Found 8 unique subdomains from 1 sources
+2026-04-12 20:21:23 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-12 20:21:28 | digiteam.module.WHOIS Lookup             | DEBUG    | Socket query to whois.nic.ge failed: timed out
+2026-04-12 20:21:28 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-12 20:21:31 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-12 20:21:45 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776018159
+2026-04-12 20:21:58 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776018159
+2026-04-12 20:22:40 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 83 results across 51 repositories
+2026-04-12 20:22:40 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-12 20:22:40 | digiteam.report                          | INFO     | JSON report generated: reports\tria.ge_2026-04-12_20-22-40\report.json
+2026-04-12 20:22:40 | digiteam.report                          | INFO     | HTML report generated: reports\tria.ge_2026-04-12_20-22-40\report.html
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Loaded report: reports\tria.ge_2026-04-12_20-22-40\report.json
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Extracted 14 unique subdomains
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Extracted 2073 unique URLs
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Wrote 14 lines to all_subdomains.txt
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Wrote 2073 lines to all_urls.txt
+2026-04-12 20:22:40 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 14 subdomains
+2026-04-12 20:22:40 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmpx1gk2u2s.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 20:22:41 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 20:22:41 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 20:22:41 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 14 subdomains
+2026-04-12 20:22:41 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE on 2072 URLs
+2026-04-12 20:22:41 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\AppData\Local\Programs\Python\Python311\Scripts\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmp_qeqwzl1.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-12 20:22:41 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 2
+2026-04-12 20:22:41 | digiteam.postprocessor                   | DEBUG    | httpx stderr: Usage: httpx.EXE [OPTIONS] URL
+
+Error: No such option: -l
+
+2026-04-12 20:22:41 | digiteam.postprocessor                   | INFO     | httpx found 0 alive from 2072 URLs
+2026-04-12 20:22:41 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_subdomains.txt
+2026-04-12 20:22:41 | digiteam.postprocessor                   | INFO     | Wrote 0 lines to alive_urls.txt
+2026-04-13 13:50:24 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 13:50:46 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 13:50:46 | digiteam.runner                          | INFO     | Loaded 13 modules for execution
+2026-04-13 13:50:46 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-13 13:50:46 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-13 13:50:46 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-13 13:50:46 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-13 13:50:46 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-13 13:50:46 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-13 13:50:46 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-13 13:50:46 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-13 13:50:46 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-13 13:50:46 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-13 13:50:46 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-13 13:50:46 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-13 13:50:46 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/104.36.194.80 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-13 13:50:46 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-13 13:50:47 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 13:50:47 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-13 13:50:47 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-13 13:50:47 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 13:50:47 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 13:50:47 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 13:50:47 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 13:50:47 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-13 13:50:47 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 13:50:47 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-13 13:50:47 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 13:50:47 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 13:50:48 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 13:50:48 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 13:50:48 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-13 13:50:48 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 13:50:49 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 13:50:49 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 13:50:51 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 13:50:51 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 13:50:51 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 13:50:55 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-13 13:51:16 | digiteam.module.Subdomain Enumeration    | DEBUG    | crt.sh query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 13:51:17 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 13:51:17 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 13:51:17 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 13:51:17 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 13:51:17 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-13 13:51:17 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 13:51:31 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776081140
+2026-04-13 13:51:45 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776081140
+2026-04-13 13:52:27 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 110 results across 100 repositories
+2026-04-13 13:52:27 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 13:52:27 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-13_13-52-27\report.json
+2026-04-13 13:52:27 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-13_13-52-27\report.html
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-13_13-52-27\report.json
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Extracted 10150 unique subdomains
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Extracted 2069 unique URLs
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Wrote 10150 lines to all_subdomains.txt
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Wrote 2069 lines to all_urls.txt
+2026-04-13 13:52:27 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\go\bin\httpx.EXE on 10150 subdomains
+2026-04-13 13:52:27 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmpn6wrqn6p.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 13:57:51 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 0
+2026-04-13 13:57:51 | digiteam.postprocessor                   | DEBUG    | httpx stderr: none
+2026-04-13 13:57:51 | digiteam.postprocessor                   | INFO     | httpx found 506 alive from 10150 subdomains
+2026-04-13 13:57:51 | digiteam.postprocessor                   | INFO     | Running httpx: C:\Users\Admin\go\bin\httpx.EXE on 2023 URLs
+2026-04-13 13:57:51 | digiteam.postprocessor                   | DEBUG    | Command: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\tmp9hkfgcgy.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 13:58:55 | digiteam.postprocessor                   | DEBUG    | httpx returncode: 0
+2026-04-13 13:58:55 | digiteam.postprocessor                   | DEBUG    | httpx stderr: none
+2026-04-13 13:58:55 | digiteam.postprocessor                   | INFO     | httpx found 2020 alive from 2023 URLs
+2026-04-13 13:58:55 | digiteam.postprocessor                   | INFO     | Wrote 506 lines to alive_subdomains.txt
+2026-04-13 13:58:55 | digiteam.postprocessor                   | INFO     | Wrote 2020 lines to alive_urls.txt
+2026-04-13 14:17:47 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 14:18:05 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 14:18:05 | digiteam.runner                          | INFO     | Loaded 13 modules
+2026-04-13 14:18:05 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for tesla.com
+2026-04-13 14:18:05 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for tesla.com
+2026-04-13 14:18:05 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for tesla.com
+2026-04-13 14:18:05 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for tesla.com
+2026-04-13 14:18:05 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for tesla.com
+2026-04-13 14:18:05 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-13 14:18:05 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-13 14:18:05 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-13 14:18:05 | digiteam.module.DNS Enumeration          | DEBUG    | Found 10 A records
+2026-04-13 14:18:06 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 MX records
+2026-04-13 14:18:06 | digiteam.module.DNS Enumeration          | DEBUG    | Found 7 NS records
+2026-04-13 14:18:06 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/2.18.52.207 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 14:18:06 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 14:18:06 | digiteam.module.DNS Enumeration          | DEBUG    | Found 32 TXT records
+2026-04-13 14:18:06 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-13 14:18:06 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 14:18:06 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 14:18:06 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 14:18:06 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for tesla.com
+2026-04-13 14:18:06 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-13 14:18:06 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for tesla.com
+2026-04-13 14:18:06 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 14:18:06 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 14:18:06 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 14:18:06 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for tesla.com
+2026-04-13 14:18:06 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 14:18:07 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 14:18:07 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 14:18:07 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 804 subdomains for tesla.com
+2026-04-13 14:18:07 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 14:18:08 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 14:18:08 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 14:18:10 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 14:18:11 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 14:18:11 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 14:18:29 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-13 14:18:36 | digiteam.module.Subdomain Enumeration    | DEBUG    | crt.sh query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 14:18:36 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=tesla.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 14:18:37 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.tesla.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 14:18:37 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-13 14:18:37 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 14:18:37 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 14:18:37 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 14:18:54 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776082780
+2026-04-13 14:19:07 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776082780
+2026-04-13 14:19:51 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 108 results across 94 repositories
+2026-04-13 14:19:51 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 14:19:51 | digiteam.report                          | INFO     | JSON report generated: reports\tesla.com_2026-04-13_14-19-51\report.json
+2026-04-13 14:19:51 | digiteam.report                          | INFO     | HTML report generated: reports\tesla.com_2026-04-13_14-19-51\report.html
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Loaded report: reports\tesla.com_2026-04-13_14-19-51\report.json
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Extracted 965 unique subdomains
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Extracted 2126 unique URLs
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Wrote 965 lines → all_subdomains.txt
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Wrote 2126 lines → all_urls.txt
+2026-04-13 14:19:51 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_27vobwdf.txt (965 subdomains)
+2026-04-13 14:19:51 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_27vobwdf.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 14:21:24 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 14:21:24 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 14:21:24 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 17289 chars
+2026-04-13 14:21:24 | digiteam.postprocessor                   | INFO     | httpx: 449 alive / 965 subdomains
+2026-04-13 14:21:24 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 14:21:24 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_htt8kcsw.txt (596 URLs)
+2026-04-13 14:21:24 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_htt8kcsw.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 14:21:38 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 14:21:38 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 14:21:38 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 36564 chars
+2026-04-13 14:21:38 | digiteam.postprocessor                   | INFO     | httpx: 562 alive / 596 URLs
+2026-04-13 14:21:38 | digiteam.postprocessor                   | INFO     | Wrote 449 lines → alive_subdomains.txt
+2026-04-13 14:21:38 | digiteam.postprocessor                   | INFO     | Wrote 562 lines → alive_urls.txt
+2026-04-13 14:25:45 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-13 14:26:04 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-13 14:26:04 | digiteam.runner                          | INFO     | Loaded 6 modules
+2026-04-13 14:26:04 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for tesla.com
+2026-04-13 14:26:04 | digiteam.module.Port Scanner             | INFO     | Scanning ports for tesla.com
+2026-04-13 14:26:04 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for tesla.com
+2026-04-13 14:26:04 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on tesla.com
+2026-04-13 14:26:04 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-13 14:26:04 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-13 14:26:04 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on tesla.com
+2026-04-13 14:26:04 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-13 14:26:04 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-13 14:26:05 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-13 14:26:05 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-13 14:26:20 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-13 14:30:07 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-13 16:23:32 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 16:23:57 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 16:23:57 | digiteam.runner                          | INFO     | Loaded 13 modules
+2026-04-13 16:23:57 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-13 16:23:57 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-13 16:23:57 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-13 16:23:57 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-13 16:23:57 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-13 16:23:57 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-13 16:23:57 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-13 16:23:57 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-13 16:23:57 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-13 16:23:57 | digiteam.module.Subdomain Enumeration    | DEBUG    | subfinder not installed, skipping
+2026-04-13 16:23:57 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-13 16:23:57 | digiteam.module.Wayback URLs             | DEBUG    | gau not installed
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-13 16:23:57 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/69.48.216.17 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 4 NS records
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-13 16:23:57 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 16:23:57 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-13 16:23:57 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 16:23:57 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-13 16:23:58 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 16:23:58 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 16:23:58 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 16:23:58 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-13 16:23:58 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 16:23:58 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 16:23:58 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-13 16:23:58 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 16:23:58 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 16:23:59 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 16:23:59 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-13 16:23:59 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 16:23:59 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 16:23:59 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 16:24:02 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 16:24:02 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 16:24:02 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 16:24:20 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-13 16:24:27 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 16:24:27 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 16:24:28 | digiteam.module.Subdomain Enumeration    | DEBUG    | crt.sh query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 16:24:29 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 16:24:29 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 16:24:29 | digiteam.module.Subdomain Enumeration    | INFO     | Found 0 unique subdomains from 0 sources
+2026-04-13 16:24:29 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 16:24:48 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776090331
+2026-04-13 16:25:38 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 120 results across 110 repositories
+2026-04-13 16:25:38 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 16:25:38 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-13_16-25-38\report.json
+2026-04-13 16:25:38 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-13_16-25-38\report.html
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-13_16-25-38\report.json
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Extracted 10148 unique subdomains
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Extracted 2069 unique URLs
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Wrote 10148 lines → all_subdomains.txt
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Wrote 2069 lines → all_urls.txt
+2026-04-13 16:25:38 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_8fgwiz2y.txt (10148 subdomains)
+2026-04-13 16:25:38 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_8fgwiz2y.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 16:30:51 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 16:30:51 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 16:30:51 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 16206 chars
+2026-04-13 16:30:51 | digiteam.postprocessor                   | INFO     | httpx: 504 alive / 10148 subdomains
+2026-04-13 16:30:51 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 16:30:51 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_p9v_atvg.txt (2023 URLs)
+2026-04-13 16:30:51 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_p9v_atvg.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 16:31:52 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 16:31:52 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 16:31:52 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 68468 chars
+2026-04-13 16:31:52 | digiteam.postprocessor                   | INFO     | httpx: 2020 alive / 2023 URLs
+2026-04-13 16:31:52 | digiteam.postprocessor                   | INFO     | Wrote 504 lines → alive_subdomains.txt
+2026-04-13 16:31:52 | digiteam.postprocessor                   | INFO     | Wrote 2020 lines → alive_urls.txt
+2026-04-13 16:32:25 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 16:33:28 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 16:33:28 | digiteam.runner                          | INFO     | Loaded 13 modules
+2026-04-13 16:33:28 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for tesla.com
+2026-04-13 16:33:28 | digiteam.module.DNS Enumeration          | WARNING  | dnspython not installed. Install with: pip install dnspython
+2026-04-13 16:33:28 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for tesla.com
+2026-04-13 16:33:28 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for tesla.com
+2026-04-13 16:33:28 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for tesla.com
+2026-04-13 16:33:28 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for tesla.com
+2026-04-13 16:33:28 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for tesla.com
+2026-04-13 16:33:28 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for tesla.com
+2026-04-13 16:33:28 | digiteam.module.DNS Enumeration          | WARNING  | DNS Enumeration skipped (pre-check failed)
+2026-04-13 16:33:28 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for tesla.com
+2026-04-13 16:33:28 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for tesla.com
+2026-04-13 16:33:28 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for tesla.com
+2026-04-13 16:33:29 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/23.7.244.207 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x724f538778c0>: Failed to resolve 'api.bgpview.io' ([Errno -2] Name or service not known)"))
+2026-04-13 16:33:29 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 16:33:29 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for tesla.com
+2026-04-13 16:33:29 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 16:33:29 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for tesla.com
+2026-04-13 16:33:29 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 804 subdomains for tesla.com
+2026-04-13 16:33:29 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 16:33:29 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 16:33:29 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 16:33:29 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 16:33:29 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 16:33:29 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 16:33:30 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 16:33:30 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 16:33:30 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 16:33:30 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 16:33:30 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 16:33:30 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 16:33:34 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 16:33:34 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 16:33:59 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 16:33:59 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 16:34:00 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776090902
+2026-04-13 16:34:13 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776090902
+2026-04-13 16:34:27 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776090902
+2026-04-13 16:34:30 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=tesla.com (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x724f538be9c0>: Failed to resolve 'www.threatcrowd.org' ([Errno -2] Name or service not known)"))
+2026-04-13 16:34:30 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.tesla.com (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x724f507547a0>: Failed to resolve 'dns.bufferover.run' ([Errno -2] Name or service not known)"))
+2026-04-13 16:34:30 | digiteam.module.Subdomain Enumeration    | INFO     | Found 1608 unique subdomains from 1 sources
+2026-04-13 16:34:30 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 16:35:21 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776090973
+2026-04-13 16:35:34 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 98 results across 86 repositories
+2026-04-13 16:35:34 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 16:38:29 | digiteam.helpers                         | WARNING  | Command timed out after 300s: waybackurls tesla.com
+2026-04-13 18:46:06 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 18:57:35 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 18:57:35 | digiteam.runner                          | INFO     | Loaded 13 modules
+2026-04-13 18:57:35 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-13 18:57:35 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-13 18:57:35 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-13 18:57:35 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-13 18:57:35 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-13 18:57:35 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-13 18:57:35 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-13 18:57:35 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-13 18:57:35 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-13 18:57:35 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-13 18:57:35 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-13 18:57:35 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-13 18:57:35 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/104.36.194.121 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 18:57:36 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-13 18:57:36 | digiteam.module.DNS Enumeration          | DEBUG    | Found 8 NS records
+2026-04-13 18:57:36 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-13 18:57:36 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 18:57:36 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-13 18:57:37 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-13 18:57:37 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-13 18:57:37 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 18:57:37 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-13 18:57:37 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 18:57:37 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 18:57:37 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 18:57:37 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-13 18:57:38 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 18:57:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-13 18:57:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 18:57:40 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 18:57:40 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 18:57:40 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 18:57:40 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 18:57:40 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 18:57:40 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 18:57:41 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 18:57:45 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 18:57:45 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 18:57:46 | digiteam.module.GitHub Recon             | ERROR    | GitHub code search failed: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-13 18:58:06 | digiteam.module.Certificate Transparency | DEBUG    | CT log query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 18:58:06 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 18:58:08 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 18:58:08 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 18:58:08 | digiteam.module.Subdomain Enumeration    | INFO     | Found 112 unique subdomains from 2 sources
+2026-04-13 18:58:08 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 18:58:45 | digiteam.module.GitHub Recon             | ERROR    | GitHub code search failed: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-04-13 18:59:13 | digiteam.module.GitHub Recon             | ERROR    | GitHub code search failed: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=15)
+2026-04-13 18:59:41 | digiteam.module.GitHub Recon             | ERROR    | GitHub code search failed: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /search/code?q=%22uber.com%22+filename%3A.git-credentials&per_page=10&sort=indexed&order=desc (Caused by NewConnectionError("HTTPSConnection(host='api.github.com', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-04-13 19:00:37 | digiteam.module.GitHub Recon             | ERROR    | GitHub code search failed: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=15)
+2026-04-13 19:00:40 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 100 results across 94 repositories
+2026-04-13 19:00:40 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 19:02:35 | digiteam.helpers                         | WARNING  | Command timed out after 300s: gau --subs uber.com
+2026-04-13 19:02:39 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-13 19:02:39 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-13_19-02-39\report.json
+2026-04-13 19:02:39 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-13_19-02-39\report.html
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-13_19-02-39\report.json
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Extracted 10039 unique subdomains
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Extracted 2069 unique URLs
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Wrote 10039 lines → all_subdomains.txt
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Wrote 2069 lines → all_urls.txt
+2026-04-13 19:02:39 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_fdudypgs.txt (10039 subdomains)
+2026-04-13 19:02:39 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_fdudypgs.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 19:05:00 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-13 19:05:21 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-13 19:05:21 | digiteam.runner                          | INFO     | Loaded 6 modules
+2026-04-13 19:05:21 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for tesla.com
+2026-04-13 19:05:21 | digiteam.module.Port Scanner             | INFO     | Scanning ports for tesla.com
+2026-04-13 19:05:21 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on tesla.com
+2026-04-13 19:05:21 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for tesla.com
+2026-04-13 19:05:21 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on tesla.com
+2026-04-13 19:05:21 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-13 19:05:21 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-13 19:05:21 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-13 19:05:21 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-13 19:05:21 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-13 19:05:22 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-13 19:05:24 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-13 19:09:45 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-13 19:09:45 | digiteam.report                          | INFO     | JSON report generated: reports\tesla.com_2026-04-13_19-09-45\report.json
+2026-04-13 19:09:45 | digiteam.report                          | INFO     | HTML report generated: reports\tesla.com_2026-04-13_19-09-45\report.html
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Loaded report: reports\tesla.com_2026-04-13_19-09-45\report.json
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Extracted 0 unique subdomains
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Extracted 0 unique URLs
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → all_subdomains.txt
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → all_urls.txt
+2026-04-13 19:09:45 | digiteam.postprocessor                   | WARNING  | No subdomains to probe
+2026-04-13 19:09:45 | digiteam.postprocessor                   | WARNING  | No URLs to probe
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → alive_subdomains.txt
+2026-04-13 19:09:45 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → alive_urls.txt
+2026-04-13 19:11:43 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-13 19:11:57 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-13 19:11:57 | digiteam.runner                          | INFO     | Loaded 6 modules
+2026-04-13 19:11:57 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for uber.com
+2026-04-13 19:11:57 | digiteam.module.Port Scanner             | INFO     | Scanning ports for uber.com
+2026-04-13 19:11:57 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for uber.com
+2026-04-13 19:11:57 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on uber.com
+2026-04-13 19:11:57 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-13 19:11:57 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-13 19:11:57 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-13 19:11:57 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-13 19:11:57 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on uber.com
+2026-04-13 19:11:57 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-13 19:11:58 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-13 19:11:58 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-13 19:16:21 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-13 19:16:21 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-13_19-16-21\report.json
+2026-04-13 19:16:21 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-13_19-16-21\report.html
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-13_19-16-21\report.json
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Extracted 0 unique subdomains
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Extracted 0 unique URLs
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → all_subdomains.txt
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → all_urls.txt
+2026-04-13 19:16:21 | digiteam.postprocessor                   | WARNING  | No subdomains to probe
+2026-04-13 19:16:21 | digiteam.postprocessor                   | WARNING  | No URLs to probe
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → alive_subdomains.txt
+2026-04-13 19:16:21 | digiteam.postprocessor                   | INFO     | Wrote 0 lines → alive_urls.txt
+2026-04-13 19:18:18 | digiteam.config                          | INFO     | Configuration loaded from config.yaml
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: whois
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: dns
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: subdomains
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: cert_transparency
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: wayback
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded passive module: asn
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: shodan
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: censys
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: virustotal
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: securitytrails
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: chaos
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: github_recon
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded API module: builtwith
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: live_hosts
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: port_scan
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: dir_fuzz
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: http_headers
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: tech_detect
+2026-04-13 19:18:37 | digiteam.runner                          | DEBUG    | Loaded active module: screenshots
+2026-04-13 19:18:37 | digiteam.runner                          | INFO     | Loaded 19 modules
+2026-04-13 19:18:37 | digiteam.module.WHOIS Lookup             | INFO     | Running WHOIS lookup for uber.com
+2026-04-13 19:18:37 | digiteam.module.DNS Enumeration          | INFO     | Running DNS enumeration for uber.com
+2026-04-13 19:18:37 | digiteam.module.Subdomain Enumeration    | INFO     | Enumerating subdomains for uber.com
+2026-04-13 19:18:37 | digiteam.module.Wayback URLs             | INFO     | Collecting wayback URLs for uber.com
+2026-04-13 19:18:37 | digiteam.module.ASN Intelligence         | INFO     | Gathering ASN intelligence for uber.com
+2026-04-13 19:18:37 | digiteam.module.Certificate Transparency | INFO     | Analyzing certificates for uber.com
+2026-04-13 19:18:37 | digiteam.module.Shodan Intelligence      | INFO     | Querying Shodan for uber.com
+2026-04-13 19:18:37 | digiteam.module.Censys Intelligence      | INFO     | Querying Censys for uber.com
+2026-04-13 19:18:37 | digiteam.module.VirusTotal Intelligence  | INFO     | Querying VirusTotal for uber.com
+2026-04-13 19:18:37 | digiteam.module.SecurityTrails Intel     | INFO     | Querying SecurityTrails for uber.com
+2026-04-13 19:18:37 | digiteam.module.Wayback URLs             | DEBUG    | waybackurls not installed
+2026-04-13 19:18:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 A records
+2026-04-13 19:18:37 | digiteam.module.ASN Intelligence         | DEBUG    | BGPView query failed: HTTPSConnectionPool(host='api.bgpview.io', port=443): Max retries exceeded with url: /ip/104.36.194.121 (Caused by NameResolutionError("HTTPSConnection(host='api.bgpview.io', port=443): Failed to resolve 'api.bgpview.io' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 19:18:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 5 MX records
+2026-04-13 19:18:37 | digiteam.module.DNS Enumeration          | DEBUG    | Found 8 NS records
+2026-04-13 19:18:38 | digiteam.module.Shodan Intelligence      | INFO     | Shodan Intelligence completed successfully
+2026-04-13 19:18:38 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Querying Chaos for uber.com
+2026-04-13 19:18:38 | digiteam.module.DNS Enumeration          | DEBUG    | Found 39 TXT records
+2026-04-13 19:18:38 | digiteam.module.SecurityTrails Intel     | WARNING  | SecurityTrails rate limit hit
+2026-04-13 19:18:38 | digiteam.module.Censys Intelligence      | ERROR    | Censys: 401 Unauthorized — check your API token
+2026-04-13 19:18:38 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS data obtained via API
+2026-04-13 19:18:38 | digiteam.module.WHOIS Lookup             | INFO     | WHOIS Lookup completed successfully
+2026-04-13 19:18:38 | digiteam.module.GitHub Recon             | INFO     | Searching GitHub for uber.com
+2026-04-13 19:18:38 | digiteam.module.VirusTotal Intelligence  | INFO     | VirusTotal Intelligence completed successfully
+2026-04-13 19:18:38 | digiteam.module.BuiltWith Tech Profile   | INFO     | Querying BuiltWith for uber.com
+2026-04-13 19:18:38 | digiteam.module.DNS Enumeration          | DEBUG    | Found 1 SOA records
+2026-04-13 19:18:38 | digiteam.module.Censys Intelligence      | WARNING  | Censys host search returned 401
+2026-04-13 19:18:38 | digiteam.module.Censys Intelligence      | INFO     | Censys found 0 subdomains, 0 hosts, 0 open ports
+2026-04-13 19:18:38 | digiteam.module.Censys Intelligence      | INFO     | Censys Intelligence completed successfully
+2026-04-13 19:18:38 | digiteam.module.Live Host Detection      | INFO     | Probing live hosts for uber.com
+2026-04-13 19:18:38 | digiteam.helpers                         | ERROR    | Command execution failed: stdin and input arguments may not both be used.
+2026-04-13 19:18:38 | digiteam.module.Live Host Detection      | INFO     | Live Host Detection completed successfully
+2026-04-13 19:18:38 | digiteam.module.Port Scanner             | INFO     | Scanning ports for uber.com
+2026-04-13 19:18:38 | digiteam.module.DNS Enumeration          | INFO     | DNS Enumeration completed successfully
+2026-04-13 19:18:38 | digiteam.module.Directory Fuzzing        | INFO     | Fuzzing directories on uber.com
+2026-04-13 19:18:38 | digiteam.module.Directory Fuzzing        | INFO     | Directory Fuzzing completed successfully
+2026-04-13 19:18:38 | digiteam.module.HTTP Headers Analysis    | INFO     | Analyzing HTTP headers for uber.com
+2026-04-13 19:18:39 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos found 10033 subdomains for uber.com
+2026-04-13 19:18:39 | digiteam.module.Chaos (PD) Subdomains    | INFO     | Chaos (PD) Subdomains completed successfully
+2026-04-13 19:18:39 | digiteam.module.Technology Detection     | INFO     | Detecting technologies on uber.com
+2026-04-13 19:18:39 | digiteam.module.BuiltWith Tech Profile   | ERROR    | BuiltWith free API failed: 'int' object is not iterable
+2026-04-13 19:18:39 | digiteam.module.HTTP Headers Analysis    | INFO     | HTTP Headers Analysis completed successfully
+2026-04-13 19:18:39 | digiteam.module.Screenshot Capture       | WARNING  | gowitness not found
+2026-04-13 19:18:39 | digiteam.module.Screenshot Capture       | WARNING  | Screenshot Capture skipped (pre-check failed)
+2026-04-13 19:18:39 | digiteam.module.Technology Detection     | INFO     | Technology Detection completed successfully
+2026-04-13 19:18:40 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith detected 0 technologies
+2026-04-13 19:18:40 | digiteam.module.BuiltWith Tech Profile   | INFO     | BuiltWith Tech Profile completed successfully
+2026-04-13 19:18:42 | digiteam.module.ASN Intelligence         | INFO     | ASN Intelligence completed successfully
+2026-04-13 19:18:42 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails found 0 subdomains
+2026-04-13 19:18:42 | digiteam.module.SecurityTrails Intel     | INFO     | SecurityTrails Intel completed successfully
+2026-04-13 19:18:45 | digiteam.module.Certificate Transparency | INFO     | Certificate Transparency completed successfully
+2026-04-13 19:19:16 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776100798
+2026-04-13 19:19:29 | digiteam.module.GitHub Recon             | WARNING  | GitHub rate limited. Remaining: 0, Reset: 1776100798
+2026-04-13 19:19:59 | digiteam.module.Subdomain Enumeration    | DEBUG    | crt.sh query failed: HTTPSConnectionPool(host='crt.sh', port=443): Read timed out. (read timeout=30)
+2026-04-13 19:20:00 | digiteam.module.Subdomain Enumeration    | DEBUG    | ThreatCrowd query failed: HTTPSConnectionPool(host='www.threatcrowd.org', port=443): Max retries exceeded with url: /searchApi/v2/domain/report/?domain=uber.com (Caused by NameResolutionError("HTTPSConnection(host='www.threatcrowd.org', port=443): Failed to resolve 'www.threatcrowd.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 19:20:00 | digiteam.module.Subdomain Enumeration    | DEBUG    | BufferOver query failed: HTTPSConnectionPool(host='dns.bufferover.run', port=443): Max retries exceeded with url: /dns?q=.uber.com (Caused by NameResolutionError("HTTPSConnection(host='dns.bufferover.run', port=443): Failed to resolve 'dns.bufferover.run' ([Errno 11001] getaddrinfo failed)"))
+2026-04-13 19:20:00 | digiteam.module.Subdomain Enumeration    | INFO     | Found 85 unique subdomains from 1 sources
+2026-04-13 19:20:00 | digiteam.module.Subdomain Enumeration    | INFO     | Subdomain Enumeration completed successfully
+2026-04-13 19:20:10 | digiteam.module.GitHub Recon             | INFO     | GitHub recon found 110 results across 100 repositories
+2026-04-13 19:20:10 | digiteam.module.GitHub Recon             | INFO     | GitHub Recon completed successfully
+2026-04-13 19:23:04 | digiteam.module.Port Scanner             | INFO     | Port Scanner completed successfully
+2026-04-13 19:23:34 | digiteam.module.Wayback URLs             | INFO     | Wayback URLs completed successfully
+2026-04-13 19:23:34 | digiteam.report                          | INFO     | JSON report generated: reports\uber.com_2026-04-13_19-23-34\report.json
+2026-04-13 19:23:34 | digiteam.report                          | INFO     | HTML report generated: reports\uber.com_2026-04-13_19-23-34\report.html
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Loaded report: reports\uber.com_2026-04-13_19-23-34\report.json
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Extracted 10035 unique subdomains
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Extracted 2069 unique URLs
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Wrote 10035 lines → all_subdomains.txt
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Wrote 2069 lines → all_urls.txt
+2026-04-13 19:23:34 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_bvnlycdw.txt (10035 subdomains)
+2026-04-13 19:23:34 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_bvnlycdw.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 19:29:03 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 19:29:03 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 19:29:03 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 12213 chars
+2026-04-13 19:29:03 | digiteam.postprocessor                   | INFO     | httpx: 422 alive / 10035 subdomains
+2026-04-13 19:29:03 | digiteam.postprocessor                   | DEBUG    | httpx found in PATH: C:\Users\Admin\go\bin\httpx.EXE
+2026-04-13 19:29:03 | digiteam.postprocessor                   | INFO     | httpx input written to C:\Users\Admin\AppData\Local\Temp\dt_httpx_mv53dqvf.txt (2023 URLs)
+2026-04-13 19:29:03 | digiteam.postprocessor                   | INFO     | Running: C:\Users\Admin\go\bin\httpx.EXE -l C:\Users\Admin\AppData\Local\Temp\dt_httpx_mv53dqvf.txt -silent -no-color -timeout 10 -rate-limit 150 -threads 50 -retries 1 -follow-redirects
+2026-04-13 19:30:14 | digiteam.postprocessor                   | DEBUG    | httpx returncode : 0
+2026-04-13 19:30:14 | digiteam.postprocessor                   | DEBUG    | httpx stderr     : none
+2026-04-13 19:30:14 | digiteam.postprocessor                   | DEBUG    | httpx stdout len : 68468 chars
+2026-04-13 19:30:14 | digiteam.postprocessor                   | INFO     | httpx: 2020 alive / 2023 URLs
+2026-04-13 19:30:14 | digiteam.postprocessor                   | INFO     | Wrote 422 lines → alive_subdomains.txt
+2026-04-13 19:30:14 | digiteam.postprocessor                   | INFO     | Wrote 2020 lines → alive_urls.txt

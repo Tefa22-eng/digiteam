@@ -1,0 +1,104 @@
+# DIGI TEAM Configuration File
+# =============================
+# API keys and tool settings
+# Environment variables override these values.
+
+general:
+  threads: 10
+  timeout: 30
+  output_dir: reports
+  json_only: false
+  user_agent: "DIGI-TEAM-Recon/2.0"
+
+api_keys:
+  # Shodan: https://account.shodan.io/
+  shodan: "YOUR_SHODAN_API_KEY"
+
+  # Censys: https://search.censys.io/account/api
+  # Uses the new unified API token (not legacy id/secret)
+  censys_token: "YOUR_CENSYS_TOKEN"
+
+  # VirusTotal: https://www.virustotal.com/gui/my-apikey
+  virustotal: "YOUR_VIRUSTOTAL_API_KEY"
+
+  # SecurityTrails: https://securitytrails.com/app/account
+  securitytrails: "YOUR_SECURITYTRAILS_API_KEY"
+
+  # ProjectDiscovery Chaos: https://chaos.projectdiscovery.io/
+  chaos: "YOUR_CHAOS_API_KEY"
+
+  # GitHub Personal Access Token
+  github_token: "YOUR_GITHUB_TOKEN"
+
+  # BuiltWith: https://api.builtwith.com/
+  builtwith: "YOUR_BUILTWITH_API_KEY"
+
+tools:
+  subfinder:
+    enabled: true
+    path: subfinder
+    timeout: 300
+
+  httpx:
+    enabled: true
+    path: httpx
+    timeout: 300
+    rate_limit: 150
+
+  naabu:
+    enabled: true
+    path: naabu
+    timeout: 600
+    top_ports: 1000
+
+  nmap:
+    enabled: true
+    path: nmap
+    timeout: 900
+    arguments: "-sV -sC"
+
+  ffuf:
+    enabled: true
+    path: ffuf
+    timeout: 600
+    wordlist: "/usr/share/wordlists/dirb/common.txt"
+    rate_limit: 100
+
+  waybackurls:
+    enabled: true
+    path: waybackurls
+    timeout: 300
+
+  gau:
+    enabled: true
+    path: gau
+    timeout: 300
+
+  gowitness:
+    enabled: true
+    path: gowitness
+    timeout: 600
+
+modules:
+  passive:
+    whois: true
+    dns: true
+    subdomains: true
+    cert_transparency: true
+    shodan: true
+    censys: true
+    virustotal: true
+    securitytrails: true
+    chaos: true
+    github_recon: true
+    builtwith: true
+    wayback: true
+    asn: true
+
+  active:
+    live_hosts: true
+    port_scan: true
+    dir_fuzz: true
+    http_headers: true
+    tech_detect: true
+    screenshots: true

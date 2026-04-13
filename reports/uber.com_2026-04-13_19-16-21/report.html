@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIGI TEAM Report - uber.com</title>
+<style>
+    :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --border: #30363d;
+        --text: #c9d1d9;
+        --text-dim: #8b949e;
+        --accent: #58a6ff;
+        --green: #3fb950;
+        --red: #f85149;
+        --yellow: #d29922;
+        --orange: #db6d28;
+        --purple: #bc8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                     Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--card);
+        margin-bottom: 2rem;
+    }
+    .header h1 {
+        color: var(--accent);
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+    .header .subtitle {
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        margin-top: .5rem;
+    }
+
+    /* ── Stat Cards ─────────────────────────────────── */
+    .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    .meta-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+    }
+    .meta-card .value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--accent);
+    }
+    .meta-card .label {
+        color: var(--text-dim);
+        font-size: .85rem;
+        margin-top: .25rem;
+    }
+
+    /* ── Sections ───────────────────────────────────── */
+    .section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .section h2 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 1.3rem;
+    }
+
+    /* ── Tables ─────────────────────────────────────── */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: .9rem;
+    }
+    th, td {
+        padding: .6rem .8rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        color: var(--accent);
+        font-weight: 600;
+        background: rgba(88,166,255,0.05);
+    }
+    tr:hover {
+        background: rgba(88,166,255,0.04);
+    }
+
+    /* ── Badges ─────────────────────────────────────── */
+    .badge {
+        display: inline-block;
+        padding: .25rem .6rem;
+        margin: .2rem;
+        border-radius: 12px;
+        font-size: .8rem;
+        background: rgba(88,166,255,0.15);
+        color: var(--accent);
+        border: 1px solid rgba(88,166,255,0.3);
+    }
+
+    /* ── Status indicators ──────────────────────────── */
+    .status-completed { color: var(--green); font-weight: bold; }
+    .status-failed    { color: var(--red);   font-weight: bold; }
+    .status-skipped   { color: var(--yellow); font-weight: bold; }
+    .status-pending   { color: var(--text-dim); }
+
+    /* ── Severity indicators ────────────────────────── */
+    .sev-critical { color: #ff0040; font-weight: bold; }
+    .sev-high     { color: var(--red);    font-weight: bold; }
+    .sev-medium   { color: var(--orange); font-weight: bold; }
+    .sev-low      { color: var(--yellow); }
+    .sev-info     { color: var(--accent); }
+
+    /* ── Endpoints list ─────────────────────────────── */
+    .endpoint-list {
+        max-height: 400px;
+        overflow-y: auto;
+        list-style: none;
+        padding: 0;
+    }
+    .endpoint-list li {
+        padding: .3rem .5rem;
+        border-bottom: 1px solid var(--border);
+        font-size: .85rem;
+        word-break: break-all;
+        font-family: 'Consolas', 'Monaco', monospace;
+    }
+    .endpoint-list li:hover {
+        background: rgba(88,166,255,0.04);
+    }
+
+    /* ── Scan summary bar ───────────────────────────── */
+    .scan-stats {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+    .scan-stat {
+        font-size: .9rem;
+    }
+    .scan-stat .num { font-weight: bold; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .footer {
+        text-align: center;
+        color: var(--text-dim);
+        padding: 2rem 0;
+        font-size: .85rem;
+    }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 768px) {
+        body { padding: .5rem; }
+        .header h1 { font-size: 1.5rem; }
+        .meta-grid { grid-template-columns: repeat(2, 1fr); }
+        table { font-size: .8rem; }
+        th, td { padding: .4rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <div class="header">
+        <h1>&#x1F50E; DIGI TEAM</h1>
+        <div class="subtitle">Elite Reconnaissance Report</div>
+
+        <div class="meta-grid">
+            <div class="meta-card">
+                <div class="value">uber.com</div>
+                <div class="label">Target Domain</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">0</div>
+                <div class="label">Subdomains</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">6</div>
+                <div class="label">Open Ports</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">2</div>
+                <div class="label">Technologies</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">0</div>
+                <div class="label">Live Hosts</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">11</div>
+                <div class="label">Findings</div>
+            </div>
+            <div class="meta-card">
+                <div class="value">264.57s</div>
+                <div class="label">Scan Duration</div>
+            </div>
+        </div>
+
+        <div class="subtitle">
+            Scan Date: 2026-04-13T19:16:21.977920
+        </div>
+        <div class="scan-stats">
+            <span class="scan-stat">
+                Modules: <span class="num">6</span>
+            </span>
+            <span class="scan-stat">
+                Completed: <span class="num status-completed">5</span>
+            </span>
+            <span class="scan-stat">
+                Failed: <span class="num status-failed">0</span>
+            </span>
+            <span class="scan-stat">
+                Skipped: <span class="num status-skipped">1</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MODULE STATUS ═══════════════ -->
+    <div class="section">
+        <h2>&#x2699; Module Execution Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Errors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Live Host Detection</td><td class="status-completed">COMPLETED</td><td>0.0s</td><td>-</td></tr>
+<tr><td>Port Scanner</td><td class="status-completed">COMPLETED</td><td>264.6s</td><td>-</td></tr>
+<tr><td>Directory Fuzzing</td><td class="status-completed">COMPLETED</td><td>0.0s</td><td>-</td></tr>
+<tr><td>HTTP Headers Analysis</td><td class="status-completed">COMPLETED</td><td>1.0s</td><td>-</td></tr>
+<tr><td>Technology Detection</td><td class="status-completed">COMPLETED</td><td>0.7s</td><td>-</td></tr>
+<tr><td>Screenshot Capture</td><td class="status-skipped">SKIPPED</td><td>0.0s</td><td>-</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ SUBDOMAINS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F310; Subdomains (0)</h2>
+        <table>
+            <thead>
+                <tr><th>#</th><th>Subdomain</th></tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="2">No subdomains discovered</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ OPEN PORTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F50C; Open Ports (6)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th>Port</th>
+                    <th>Service</th>
+                    <th>Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>uber.com</td><td>80</td><td>http</td><td></td></tr>
+<tr><td>uber.com</td><td>443</td><td>ssl|https</td><td>ufe</td></tr>
+<tr><td>uber.com</td><td>8008</td><td>http?</td><td></td></tr>
+<tr><td>uber.com</td><td>80</td><td>http</td><td></td></tr>
+<tr><td>uber.com</td><td>443</td><td>ssl|https</td><td>ufe</td></tr>
+<tr><td>uber.com</td><td>8008</td><td>http?</td><td></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ LIVE HOSTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F5A5; Live Hosts (0)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>URL</th>
+                    <th>Status</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4">No live hosts detected</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ TECHNOLOGIES ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F6E0; Technologies Detected (2)</h2>
+        <div style="padding: .5rem 0;">
+            <span class="badge">CloudFlare</span>
+<span class="badge">Server: cloudflare</span>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════ ENDPOINTS ═══════════════ -->
+    <div class="section">
+        <h2>&#x1F517; Endpoints (0)</h2>
+        <ul class="endpoint-list">
+            <li>No endpoints discovered</li>
+        </ul>
+        
+    </div>
+
+    <!-- ═══════════════ VULNERABILITIES ═══════════════ -->
+    <div class="section">
+        <h2>&#x26A0; Vulnerability Indicators (11)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:100px;">Severity</th>
+                    <th>Finding</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="sev-medium">MEDIUM</td><td>Missing Content-Security-Policy</td><td>The Content-Security-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing X-XSS-Protection</td><td>The X-XSS-Protection header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Referrer-Policy</td><td>The Referrer-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Permissions-Policy</td><td>The Permissions-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Feature-Policy</td><td>The Feature-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Cross-Origin-Embedder-Policy</td><td>The Cross-Origin-Embedder-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Cross-Origin-Opener-Policy</td><td>The Cross-Origin-Opener-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Missing Cross-Origin-Resource-Policy</td><td>The Cross-Origin-Resource-Policy header is not set on https://uber.com</td></tr>
+<tr><td class="sev-low">LOW</td><td>Information Disclosure: Server</td><td>Server reveals: cloudflare</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>Insecure Cookie: _ua</td><td>Cookie &#x27;_ua&#x27; has missing HttpOnly flag</td></tr>
+<tr><td class="sev-medium">MEDIUM</td><td>Insecure Cookie: marketing_vistor_id</td><td>Cookie &#x27;marketing_vistor_id&#x27; has missing HttpOnly flag</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <div class="footer">
+        <p>
+            Generated by <strong>DIGI TEAM v2.0.0</strong>
+            - Elite Reconnaissance Framework
+        </p>
+        <p style="margin-top: .25rem;">
+            Report generated: 2026-04-13T19:16:21.977920
+            | Target: uber.com
+            | Duration: 264.57s
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
