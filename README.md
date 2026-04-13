@@ -54,7 +54,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/digiteam.git
+git clone https://github.com/Tefa22-eng/digiteam.git
 cd digiteam
 
 # Install Python dependencies
